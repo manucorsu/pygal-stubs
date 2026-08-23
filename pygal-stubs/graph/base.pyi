@@ -1,6 +1,10 @@
 from _typeshed import Incomplete
 from pygal._compat import is_list_like as is_list_like
-from pygal.adapters import decimal_to_float as decimal_to_float, not_zero as not_zero, positive as positive
+from pygal.adapters import (
+    decimal_to_float as decimal_to_float,
+    not_zero as not_zero,
+    positive as positive,
+)
 from pygal.config import Config as Config, SerieConfig as SerieConfig
 from pygal.serie import Serie as Serie
 from pygal.state import State as State

@@ -11,8 +11,12 @@ from pygal.graph.graph import Graph as Graph
 from pygal.graph.histogram import Histogram as Histogram
 from pygal.graph.horizontalbar import HorizontalBar as HorizontalBar
 from pygal.graph.horizontalline import HorizontalLine as HorizontalLine
-from pygal.graph.horizontalstackedbar import HorizontalStackedBar as HorizontalStackedBar
-from pygal.graph.horizontalstackedline import HorizontalStackedLine as HorizontalStackedLine
+from pygal.graph.horizontalstackedbar import (
+    HorizontalStackedBar as HorizontalStackedBar,
+)
+from pygal.graph.horizontalstackedline import (
+    HorizontalStackedLine as HorizontalStackedLine,
+)
 from pygal.graph.line import Line as Line
 from pygal.graph.map import BaseMap as BaseMap
 from pygal.graph.pie import Pie as Pie
@@ -21,7 +25,12 @@ from pygal.graph.radar import Radar as Radar
 from pygal.graph.solidgauge import SolidGauge as SolidGauge
 from pygal.graph.stackedbar import StackedBar as StackedBar
 from pygal.graph.stackedline import StackedLine as StackedLine
-from pygal.graph.time import DateLine as DateLine, DateTimeLine as DateTimeLine, TimeDeltaLine as TimeDeltaLine, TimeLine as TimeLine
+from pygal.graph.time import (
+    DateLine as DateLine,
+    DateTimeLine as DateTimeLine,
+    TimeDeltaLine as TimeDeltaLine,
+    TimeLine as TimeLine,
+)
 from pygal.graph.treemap import Treemap as Treemap
 from pygal.graph.xy import XY as XY
 

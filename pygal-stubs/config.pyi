@@ -14,7 +14,9 @@ class Key:
     subdoc: Incomplete
     subtype: Incomplete
     name: str
-    def __init__(self, default_value, type_, category, doc, subdoc: str = '', subtype=None) -> None: ...
+    def __init__(
+        self, default_value, type_, category, doc, subdoc: str = "", subtype=None
+    ) -> None: ...
     @property
     def is_boolean(self): ...
     @property

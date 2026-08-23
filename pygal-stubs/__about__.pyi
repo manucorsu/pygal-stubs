@@ -1,6 +1,15 @@
 from _typeshed import Incomplete
 
-__all__ = ['__title__', '__version__', '__summary__', '__uri__', '__author__', '__email__', '__license__', '__copyright__']
+__all__ = [
+    "__title__",
+    "__version__",
+    "__summary__",
+    "__uri__",
+    "__author__",
+    "__email__",
+    "__license__",
+    "__copyright__",
+]
 
 __title__: str
 __version__: str

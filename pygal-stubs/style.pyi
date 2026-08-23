@@ -1,6 +1,10 @@
 from _typeshed import Incomplete
 from pygal import colors as colors
-from pygal.colors import darken as darken, is_foreground_light as is_foreground_light, lighten as lighten
+from pygal.colors import (
+    darken as darken,
+    is_foreground_light as is_foreground_light,
+    lighten as lighten,
+)
 
 class Style:
     plot_background: str
@@ -44,6 +48,7 @@ class Style:
     def __init__(self, **kwargs) -> None: ...
     def get_colors(self, prefix, len_): ...
     def to_dict(self): ...
+
 DefaultStyle = Style
 
 class DarkStyle(Style):
@@ -198,7 +203,9 @@ styles: Incomplete
 
 class ParametricStyleBase(Style):
     colors: Incomplete
-    def __init__(self, color, step: int = 10, max_=None, base_style=None, **kwargs) -> None: ...
+    def __init__(
+        self, color, step: int = 10, max_=None, base_style=None, **kwargs
+    ) -> None: ...
 
 class LightenStyle(ParametricStyleBase): ...
 class DarkenStyle(ParametricStyleBase): ...
