@@ -1,10 +1,13 @@
-from _typeshed import Incomplete
+from typing import Any, override
 
 class Etree:
-    lxml: Incomplete
+    lxml: bool
     def __init__(self) -> None: ...
-    def __getattribute__(self, attr): ...
+    @override
+    def __getattribute__(
+        self, attr: str
+    ) -> Any: ...  # pyright: ignore[reportExplicitAny]
     def to_lxml(self) -> None: ...
     def to_etree(self) -> None: ...
 
-etree: Incomplete
+etree: Etree
