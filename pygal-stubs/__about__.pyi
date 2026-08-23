@@ -1,5 +1,3 @@
-from _typeshed import Incomplete
-
 __all__ = [
     "__title__",
     "__version__",
@@ -18,4 +16,4 @@ __uri__: str
 __author__: str
 __email__: str
 __license__: str
-__copyright__: Incomplete
+__copyright__: str

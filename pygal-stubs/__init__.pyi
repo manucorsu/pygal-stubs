@@ -1,3 +1,6 @@
+from types import ModuleType
+from typing import Sequence
+
 from .__about__ import *
 from _typeshed import Incomplete
 from pygal import maps as maps
@@ -34,11 +37,12 @@ from pygal.graph.time import (
 from pygal.graph.treemap import Treemap as Treemap
 from pygal.graph.xy import XY as XY
 
-CHARTS_BY_NAME: Incomplete
-module: Incomplete
-CHARTS_NAMES: Incomplete
-CHARTS: Incomplete
+CHARTS_BY_NAME: dict[str, type[Graph]]
+CHARTS_NAMES: list[str]
+CHARTS: list[type[Graph]]
 
 class PluginImportFixer:
-    def find_module(self, fullname, path=None): ...
-    def load_module(self, name): ...
+    def find_module(
+        self, fullname: str, path: Sequence[str] | None = None
+    ) -> PluginImportFixer | None: ...
+    def load_module(self, name: str) -> ModuleType: ...
