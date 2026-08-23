@@ -1,0 +1,6 @@
+from pygal.adapters import positive as positive
+from pygal.graph.horizontal import HorizontalGraph as HorizontalGraph
+from pygal.graph.stackedbar import StackedBar as StackedBar
+
+class VerticalPyramid(StackedBar): ...
+class Pyramid(HorizontalGraph, VerticalPyramid): ...
