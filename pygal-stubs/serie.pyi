@@ -6,6 +6,12 @@ class Serie:
     values: list[object]
     config: SerieConfig
     metadata: dict[str, object] | None
-    def __init__(self, index: int, values: list[object], config: SerieConfig, metadata: dict[str, object] | None = None) -> None: ...
+    def __init__(
+        self,
+        index: int,
+        values: list[object],
+        config: SerieConfig,
+        metadata: dict[str, object] | None = None,
+    ) -> None: ...
     @cached_property
     def safe_values(self) -> list[object]: ...
