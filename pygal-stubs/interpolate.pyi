@@ -1,20 +1,28 @@
-from _typeshed import Incomplete
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
+from typing import Callable, Literal
 
 def quadratic_interpolate(
-    x, y, precision: int = 250, **kwargs
-) -> Generator[Incomplete]: ...
+    x: Sequence[float], y: Sequence[float], precision: int = 250, **kwargs: object
+) -> Generator[tuple[float, float], None, None]: ...
 def cubic_interpolate(
-    x, y, precision: int = 250, **kwargs
-) -> Generator[Incomplete]: ...
+    x: Sequence[float], y: Sequence[float], precision: int = 250, **kwargs: object
+) -> Generator[tuple[float, float], None, None]: ...
 def hermite_interpolate(
-    x, y, precision: int = 250, type: str = "cardinal", c=None, b=None, t=None
-) -> Generator[Incomplete, None, Incomplete]: ...
+    x: Sequence[float],
+    y: Sequence[float],
+    precision: int = 250,
+    type: Literal[
+        "cardinal", "catmull_rom", "finite_difference", "kochanek_bartels"
+    ] = "cardinal",
+    c: float | None = None,
+    b: float | None = None,
+    t: float | None = None,
+) -> Generator[tuple[float, float], None, None]: ...
 def lagrange_interpolate(
-    x, y, precision: int = 250, **kwargs
-) -> Generator[Incomplete]: ...
+    x: Sequence[float], y: Sequence[float], precision: int = 250, **kwargs: object
+) -> Generator[tuple[float, float], None, None]: ...
 def trigonometric_interpolate(
-    x, y, precision: int = 250, **kwargs
-) -> Generator[Incomplete]: ...
+    x: Sequence[float], y: Sequence[float], precision: int = 250, **kwargs: object
+) -> Generator[tuple[float, float], None, None]: ...
 
-INTERPOLATIONS: Incomplete
+INTERPOLATIONS: dict[str, Callable[..., Generator[tuple[float, float], None, None]]]
