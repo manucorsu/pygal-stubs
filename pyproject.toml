@@ -34,3 +34,9 @@ Issues = "https://github.com/manucorsu/pygal-stubs/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["pygal-stubs"]
+
+[tool.black]
+target-version = ["py310"]
+line-length = 88
+include = ".pyi$"
+exclude = '/(\.git|\.venv|\.mypy_cache|\.ruff_cache|\.pytest_cache)/'
