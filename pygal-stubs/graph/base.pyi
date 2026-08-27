@@ -1,3 +1,5 @@
+from typing import Callable
+from typing_extensions import override
 from _typeshed import Incomplete
 from pygal._compat import is_list_like as is_list_like
 from pygal.adapters import (
@@ -13,31 +15,45 @@ from pygal.config import Config as Config
 from pygal.config import SerieConfig as SerieConfig
 from pygal.serie import Serie as Serie
 from pygal.state import State as State
+from pygal.style import Style
 from pygal.svg import Svg as Svg
 from pygal.util import compose as compose
 from pygal.util import ident as ident
 from pygal.view import Box as Box
 from pygal.view import Margin as Margin
 
+from xml.etree.ElementTree import Element as _StdEtreeElement
+
+from lxml.etree import (
+    Element as _LxmlElement,
+)
+
 class BaseGraph:
-    config: Incomplete
-    state: Incomplete
-    uuid: Incomplete
-    raw_series: Incomplete
-    xml_filters: Incomplete
-    def __init__(self, config=None, **kwargs) -> None: ...
-    def __setattr__(self, name, value) -> None: ...
-    def __getattribute__(self, name): ...
-    zero: int
-    def prepare_values(self, raw, offset: int = 0): ...
-    x_labels: Incomplete
-    y_labels: Incomplete
-    style: Incomplete
-    series: Incomplete
-    secondary_series: Incomplete
-    horizontal: Incomplete
-    svg: Incomplete
-    nodes: Incomplete
+    config: Config
+    state: State
+    uuid: str
+    raw_series: list[tuple[object, dict[str, object]]]
+    xml_filters: list[Callable[[object], object]]
+    x_label_rotation: float | None
+    def __init__(
+        self, config: Config | type[Config] | None = None, **kwargs: object
+    ) -> None: ...
+    @override
+    def __setattr__(self, name: str, value: object) -> None: ...
+    @override
+    def __getattribute__(self, name: str) -> object: ...
+    zero: float
+    def prepare_values(
+        self, raw: list[tuple[object, dict[str, object]]], offset: float = 0
+    ) -> list[Serie] | None: ...
+    x_labels: list[str] | None
+    y_labels: list[str] | None
+    style: Style
+    series: list[Serie]
+    secondary_series: list[Serie]
+    horizontal: bool
+    svg: Svg
+    nodes: dict[str, _LxmlElement | _StdEtreeElement]
     margin_box: Incomplete
     view: Incomplete
     interpolate: Incomplete
