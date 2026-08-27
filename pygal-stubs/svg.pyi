@@ -6,7 +6,7 @@ from lxml.etree import (
     Element as _LxmlElement,
 )
 from lxml.etree import (
-    _ProcessingInstruction as _LxmlProcessingInstruction,
+    _ProcessingInstruction as _LxmlProcessingInstruction,  # pyright: ignore[reportPrivateUsage]
 )
 from pygal import Graph
 from pygal import __version__ as __version__

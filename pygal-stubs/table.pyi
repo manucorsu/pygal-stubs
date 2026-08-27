@@ -1,4 +1,4 @@
-from typing import override
+from typing_extensions import override
 
 from pygal import Graph
 from pygal.util import template as template

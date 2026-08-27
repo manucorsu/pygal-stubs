@@ -42,7 +42,16 @@ from pygal.graph.time import (
 from pygal.graph.treemap import Treemap as Treemap
 from pygal.graph.xy import XY as XY
 
-from .__about__ import *
+from .__about__ import (
+    __title__ as __title__,
+    __version__ as __version__,
+    __summary__ as __summary__,
+    __uri__ as __uri__,
+    __author__ as __author__,
+    __email__ as __email__,
+    __license__ as __license__,
+    __copyright__ as __copyright__,
+)
 
 CHARTS_BY_NAME: dict[str, type[Graph]]
 CHARTS_NAMES: list[str]
