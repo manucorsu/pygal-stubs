@@ -1,5 +1,5 @@
-from _typeshed import Incomplete
 from pygal.graph.graph import Graph as Graph
+from pygal.serie import Serie
 from pygal.util import (
     alter as alter,
 )
@@ -20,5 +20,5 @@ from pygal.view import (
 )
 
 class Gauge(Graph):
-    needle_width: Incomplete
-    def needle(self, serie): ...
+    needle_width: float
+    def needle(self, serie: Serie) -> None: ...
