@@ -1,6 +1,9 @@
-from typing import Callable
-from typing_extensions import override
-from _typeshed import Incomplete
+from collections.abc import Callable
+from xml.etree.ElementTree import Element as _StdEtreeElement
+
+from lxml.etree import (
+    Element as _LxmlElement,
+)
 from pygal._compat import is_list_like as is_list_like
 from pygal.adapters import (
     decimal_to_float as decimal_to_float,
@@ -21,12 +24,8 @@ from pygal.util import compose as compose
 from pygal.util import ident as ident
 from pygal.view import Box as Box
 from pygal.view import Margin as Margin
-
-from xml.etree.ElementTree import Element as _StdEtreeElement
-
-from lxml.etree import (
-    Element as _LxmlElement,
-)
+from pygal.view import View
+from typing_extensions import override
 
 class BaseGraph:
     config: Config
@@ -54,8 +53,8 @@ class BaseGraph:
     horizontal: bool
     svg: Svg
     nodes: dict[str, _LxmlElement | _StdEtreeElement]
-    margin_box: Incomplete
-    view: Incomplete
-    interpolate: Incomplete
-    def setup(self, **kwargs): ...
+    margin_box: Margin
+    view: View | None
+    interpolate: bool | None
+    def setup(self, **kwargs: object) -> None: ...
     def teardown(self) -> None: ...
