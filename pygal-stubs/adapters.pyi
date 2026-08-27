@@ -1,6 +1,7 @@
-from _typeshed import SupportsDunderLT
 from decimal import Decimal
-from typing import Literal, overload, TypeVar
+from typing import Literal, TypeVar, overload
+
+from _typeshed import SupportsDunderLT
 
 _T = TypeVar("_T")
 _ComparableT = TypeVar("_ComparableT", bound=SupportsDunderLT[int])
@@ -12,7 +13,7 @@ def positive(x: str) -> str: ...
 @overload
 def positive(x: _ComparableT) -> _ComparableT | int: ...
 @overload
-def not_zero(x: Literal[0] | Literal[False]) -> None: ...
+def not_zero(x: Literal[0, False]) -> None: ...
 @overload
 def not_zero(x: float | None) -> float | None: ...
 @overload

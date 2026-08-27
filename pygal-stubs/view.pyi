@@ -1,5 +1,4 @@
-from math import pi
-from typing import Literal, overload
+from typing import Literal, TypeAlias, overload
 
 class Margin:
     top: float
@@ -20,7 +19,7 @@ class Box:
         self, xmin: float = 0, ymin: float = 0, xmax: float = 1, ymax: float = 1
     ) -> None: ...
     def set_polar_box(
-        self, rmin: float = 0, rmax: float = 1, tmin: float = 0, tmax: float = 2 * pi
+        self, rmin: float = 0, rmax: float = 1, tmin: float = 0, tmax: float = ...
     ) -> None: ...
     @property
     def xmin(self) -> float: ...
@@ -100,7 +99,7 @@ class PolarLogView(View):
 class PolarThetaView(View):
     aperture: float
     def __init__(
-        self, width: float, height: float, box: Box, aperture: float = pi / 3
+        self, width: float, height: float, box: Box, aperture: float = ...
     ) -> None: ...
     @overload
     def __call__(self, rhotheta: tuple[None, None]) -> tuple[None, None]: ...
@@ -116,7 +115,7 @@ class PolarThetaLogView(View):
     log10_tmax: float
     log10_tmin: float
     def __init__(
-        self, width: float, height: float, box: Box, aperture: float = pi / 3
+        self, width: float, height: float, box: Box, aperture: float = ...
     ) -> None: ...
     @overload
     def __call__(self, rhotheta: tuple[None, None]) -> tuple[None, None]: ...
@@ -127,7 +126,7 @@ class PolarThetaLogView(View):
     @overload
     def __call__(self, rhotheta: tuple[float, float]) -> tuple[float, float]: ...
 
-_Zero = Literal[0] | Literal[False]
+_Zero: TypeAlias = Literal[0, False]
 
 class LogView(View):
     log10_ymax: float

@@ -1,6 +1,8 @@
 from pygal.graph.graph import Graph as Graph
 from pygal.view import (
     HorizontalLogView as HorizontalLogView,
+)
+from pygal.view import (
     HorizontalView as HorizontalView,
 )
 

@@ -1,9 +1,7 @@
-from collections.abc import Generator, Iterable, Mapping, Sequence
+from collections.abc import Callable, Generator, Hashable, Iterable, Mapping, Sequence
 from re import Pattern
 from typing import (
-    Callable,
     Generic,
-    Hashable,
     ParamSpec,
     SupportsInt,
     TypeVar,

@@ -1,4 +1,5 @@
 from typing import override
+
 from pygal import Graph
 from pygal.util import template as template
 

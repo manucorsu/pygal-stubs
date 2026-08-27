@@ -1,21 +1,37 @@
 from collections.abc import Sequence
 from typing import Literal, overload
-from pygal import Graph, __version__ as __version__
+from xml.etree.ElementTree import Element as _StdEtreeElement
+
+from lxml.etree import (
+    Element as _LxmlElement,
+)
+from lxml.etree import (
+    _ProcessingInstruction as _LxmlProcessingInstruction,
+)
+from pygal import Graph
+from pygal import __version__ as __version__
 from pygal.etree import etree as etree
 from pygal.serie import Serie
 from pygal.util import (
     coord_abs_project as coord_abs_project,
-    coord_diff as coord_diff,
-    coord_dual as coord_dual,
-    coord_format as coord_format,
-    coord_project as coord_project,
-    minify_css as minify_css,
-    template as template,
 )
-from xml.etree.ElementTree import Element as _StdEtreeElement
-from lxml.etree import (
-    Element as _LxmlElement,
-    _ProcessingInstruction as _LxmlProcessingInstruction,
+from pygal.util import (
+    coord_diff as coord_diff,
+)
+from pygal.util import (
+    coord_dual as coord_dual,
+)
+from pygal.util import (
+    coord_format as coord_format,
+)
+from pygal.util import (
+    coord_project as coord_project,
+)
+from pygal.util import (
+    minify_css as minify_css,
+)
+from pygal.util import (
+    template as template,
 )
 
 # see Svg.processing_instructions to see why we import a private

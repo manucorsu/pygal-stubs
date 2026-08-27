@@ -1,6 +1,8 @@
-from typing import Literal, overload
+from typing import Literal, TypeAlias, overload
 
-_ColorFormat = Literal["#rgb", "#rgba", "#rrggbb", "#rrggbbaa", "rgb", "rgba"]
+_ColorFormat: TypeAlias = Literal[
+    "#rgb", "#rgba", "#rrggbb", "#rrggbbaa", "rgb", "rgba"
+]
 
 def normalize_float(f: float) -> float | int: ...
 def rgb_to_hsl(

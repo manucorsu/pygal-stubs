@@ -1,7 +1,6 @@
 import datetime
-from typing import Any, Iterable
-
-from typing_extensions import TypeGuard
+from collections.abc import Iterable
+from typing import Any, TypeGuard
 
 def is_list_like(
     value: object,

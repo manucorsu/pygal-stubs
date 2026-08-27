@@ -2,15 +2,22 @@ from _typeshed import Incomplete
 from pygal._compat import is_list_like as is_list_like
 from pygal.adapters import (
     decimal_to_float as decimal_to_float,
+)
+from pygal.adapters import (
     not_zero as not_zero,
+)
+from pygal.adapters import (
     positive as positive,
 )
-from pygal.config import Config as Config, SerieConfig as SerieConfig
+from pygal.config import Config as Config
+from pygal.config import SerieConfig as SerieConfig
 from pygal.serie import Serie as Serie
 from pygal.state import State as State
 from pygal.svg import Svg as Svg
-from pygal.util import compose as compose, ident as ident
-from pygal.view import Box as Box, Margin as Margin
+from pygal.util import compose as compose
+from pygal.util import ident as ident
+from pygal.view import Box as Box
+from pygal.view import Margin as Margin
 
 class BaseGraph:
     config: Incomplete

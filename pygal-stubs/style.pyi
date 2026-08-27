@@ -1,7 +1,11 @@
 from pygal import colors as colors
 from pygal.colors import (
     darken as darken,
+)
+from pygal.colors import (
     is_foreground_light as is_foreground_light,
+)
+from pygal.colors import (
     lighten as lighten,
 )
 

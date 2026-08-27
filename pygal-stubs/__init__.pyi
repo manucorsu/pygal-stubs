@@ -1,8 +1,6 @@
+from collections.abc import Sequence
 from types import ModuleType
-from typing import Sequence
 
-from .__about__ import *
-from _typeshed import Incomplete
 from pygal import maps as maps
 from pygal.config import Config as Config
 from pygal.graph.bar import Bar as Bar
@@ -23,19 +21,28 @@ from pygal.graph.horizontalstackedline import (
 from pygal.graph.line import Line as Line
 from pygal.graph.map import BaseMap as BaseMap
 from pygal.graph.pie import Pie as Pie
-from pygal.graph.pyramid import Pyramid as Pyramid, VerticalPyramid as VerticalPyramid
+from pygal.graph.pyramid import Pyramid as Pyramid
+from pygal.graph.pyramid import VerticalPyramid as VerticalPyramid
 from pygal.graph.radar import Radar as Radar
 from pygal.graph.solidgauge import SolidGauge as SolidGauge
 from pygal.graph.stackedbar import StackedBar as StackedBar
 from pygal.graph.stackedline import StackedLine as StackedLine
 from pygal.graph.time import (
     DateLine as DateLine,
+)
+from pygal.graph.time import (
     DateTimeLine as DateTimeLine,
+)
+from pygal.graph.time import (
     TimeDeltaLine as TimeDeltaLine,
+)
+from pygal.graph.time import (
     TimeLine as TimeLine,
 )
 from pygal.graph.treemap import Treemap as Treemap
 from pygal.graph.xy import XY as XY
+
+from .__about__ import *
 
 CHARTS_BY_NAME: dict[str, type[Graph]]
 CHARTS_NAMES: list[str]

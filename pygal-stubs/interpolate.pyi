@@ -1,5 +1,5 @@
-from collections.abc import Generator, Sequence
-from typing import Callable, Literal
+from collections.abc import Callable, Generator, Sequence
+from typing import Literal
 
 def quadratic_interpolate(
     x: Sequence[float], y: Sequence[float], precision: int = 250, **kwargs: object
