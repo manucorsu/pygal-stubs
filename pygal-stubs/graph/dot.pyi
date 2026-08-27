@@ -1,4 +1,5 @@
 from pygal.graph.graph import Graph as Graph
+from pygal.serie import Serie
 from pygal.util import (
     alter as alter,
 )
@@ -15,4 +16,4 @@ from pygal.view import ReverseView as ReverseView
 from pygal.view import View as View
 
 class Dot(Graph):
-    def dot(self, serie, r_max) -> None: ...
+    def dot(self, serie: Serie, r_max: float) -> None: ...
