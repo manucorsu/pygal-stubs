@@ -6,7 +6,7 @@ def confidence_interval_continuous(
     stddev: float,
     sample_size: int,
     confidence: float = 0.95,
-    **kwargs: object
+    **kwargs: object,
 ) -> tuple[float, float]: ...
 def confidence_interval_dichotomous(
     point_estimate: float,
@@ -14,7 +14,7 @@ def confidence_interval_dichotomous(
     confidence: float = 0.95,
     bias: bool = False,
     percentage: bool = True,
-    **kwargs: object
+    **kwargs: object,
 ) -> tuple[float, float]: ...
 def confidence_interval_manual(
     point_estimate: object, low: float, high: float

@@ -75,7 +75,7 @@ class ParametricStyleBase(Style):
         step: int = 10,
         max_: int | None = None,
         base_style: Style | None = None,
-        **kwargs: object
+        **kwargs: object,
     ) -> None: ...
 
 class LightenStyle(ParametricStyleBase): ...

@@ -1,5 +1,6 @@
 from types import FunctionType
-from typing import Self, TypeVar, Generic, Callable
+from typing import TypeVar, Generic, Callable
+from typing_extensions import Self
 from pygal import formatters as formatters
 from pygal.interpolate import INTERPOLATIONS as INTERPOLATIONS
 from pygal.style import DefaultStyle as DefaultStyle, Style as Style

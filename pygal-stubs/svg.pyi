@@ -41,14 +41,14 @@ class Svg:
         parent: _StdEtreeElement | _LxmlElement | None = None,
         tag: str = "g",
         attrib: dict[str, object] | None = None,
-        **extras: object
+        **extras: object,
     ) -> _StdEtreeElement | _LxmlElement: ...
     def transposable_node(
         self,
         parent: _StdEtreeElement | _LxmlElement | None = None,
         tag: str = "g",
         attrib: dict[str, object] | None = None,
-        **extras: object
+        **extras: object,
     ) -> _StdEtreeElement | _LxmlElement: ...
     def serie(self, serie: Serie) -> dict[str, _StdEtreeElement | _LxmlElement]: ...
     def line(
@@ -56,7 +56,7 @@ class Svg:
         node: _StdEtreeElement | _LxmlElement,
         coords: Sequence[Sequence[float]],
         close: bool = False,
-        **kwargs: object
+        **kwargs: object,
     ) -> _StdEtreeElement | _LxmlElement: ...
     def slice(
         self,

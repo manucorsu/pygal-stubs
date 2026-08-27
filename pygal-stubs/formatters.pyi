@@ -1,5 +1,5 @@
-from _typeshed import Incomplete
-from typing import Literal, overload, LiteralString, Protocol
+from typing import Literal, overload, Protocol
+from typing_extensions import LiteralString
 from pygal.util import float_format as float_format
 
 class _SupportsIsoformat(Protocol):
