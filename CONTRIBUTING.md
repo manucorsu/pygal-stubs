@@ -78,4 +78,10 @@ After modifying the stubs, you should run `hatch check --fix`. This will:
 - Fix linting with ruff
 - Give you a summary of any type errors (from basedpyright)
 
-Please make sure that there are no type errors, then submit a PR. Once you're done, you can run `deactivate` to leave the venv.
+Please make sure that there are no type errors, then submit a PR.
+
+# Additional considerantions
+- Once you're done working, you can run `deactivate` to make your shell leave the venv.
+- **Visual Studio Code users beware**: This repository has a `.vscode/settings.json` file that will disable Pylance (Microsoft's proprietary Python language server that comes with the Python extension). Install the **[basedpyright extension](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright)** to regain in-editor type checking.
+    - Pylance will remain enabled in all other projects that don't have a `.vscode/settings.json` like this, taking priority over basedpyright.
+    - _Users of non-proprietary releases (i.e. VSCodium or built from source), and forks (i.e Antigravity IDE) don't need to worry about this because Microsoft does not make Pylance available to them. You should still make sure you're using basedpyright and not another language server like pyrefly._
