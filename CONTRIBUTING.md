@@ -1,5 +1,5 @@
-PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) instructions for an easy way to configure your environment.
-# Rules
+PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) instructions to learn how to configure your environment.
+
 - All stubs **must be compatible with Python 3.10**.
     - The supported version is the newest of:
         - the oldest Python version that is still receiving security updates (currently 3.10, see [Status of Python versions](https://devguide.python.org/versions/))
