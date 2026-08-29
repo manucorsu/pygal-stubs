@@ -35,7 +35,7 @@ After that, run `pyenv version` and you should see something like:
 ```
 The correct Python version will now be used automatically in this repository.
 ### 1b. On Windows, using the Python install manager
-Unlike pyenv, the Python install manager does not read from `.python-version` so you'll need to install the correct Python version manually by running (in a Command Prompt anywhere):
+Unlike pyenv, the Python install manager does not read from `.python-version`, so you'll need to install the correct Python version manually by running (in a Command Prompt anywhere):
 ```bat
 py install 3.10
 ```
@@ -55,7 +55,7 @@ python3.10.exe -m venv .venv
 call .venv\Scripts\Activate
 ```
 > [!IMPORTANT]
-> After this, you should use **`python`** and not `python3.10.exe`, but for this specific step you must use `python3.10.exe` or you'll have created the venv with your global Python (likely 3.14) instead.
+> After this, you should use **`python`** and not `python3.10.exe`, but for this specific step you must use `python3.10.exe` or you'll end up creating the venv with your global Python (likely 3.14) instead of 3.10.
 
 ## 3. (in any case) Install dependencies
 After step 2, you should now see `(.venv)` at the beginning of your shell prompt. Running `which python` (\*nix) or `where python` (Windows cmd) should point to the `python` executable inside `.venv` (on Windows it's the first line of `where python`'s output that matters.)
@@ -76,7 +76,7 @@ This will install **types-lxml** (that regular distributions of this package alr
 After modifying the stubs, you should run `hatch check --fix`. This will:
 - Format with black
 - Fix linting with ruff
-- Give you a summary of any type errors (from basedpyright)
+- Give you a summary of any type errors (from basedpyright) and linter errors that couldn't be auto-fixed (from ruff)
 
 Please make sure that there are no type errors, then submit a PR.
 
