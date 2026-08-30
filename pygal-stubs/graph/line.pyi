@@ -1,4 +1,5 @@
 from pygal.graph.graph import Graph as Graph
+from pygal.serie import Serie
 from pygal.util import (
     alter as alter,
 )
@@ -10,5 +11,5 @@ from pygal.util import (
 )
 
 class Line(Graph):
-    def __init__(self, *args, **kwargs) -> None: ...
-    def line(self, serie, rescale: bool = False) -> None: ...
+    def __init__(self, *args: object, **kwargs: object) -> None: ...
+    def line(self, serie: Serie, rescale: bool = False) -> None: ...
