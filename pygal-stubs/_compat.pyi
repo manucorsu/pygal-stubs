@@ -1,8 +1,10 @@
-import datetime
 from collections.abc import Iterable
-from typing import Any, TypeGuard
+from typing import TypeVar, Protocol
+from typing_extensions import TypeIs
 
-def is_list_like(
-    value: object,
-) -> TypeGuard[Iterable[Any]]: ...  # pyright: ignore[reportExplicitAny]
-def timestamp(x: datetime.datetime) -> float: ...
+_T_co = TypeVar("_T_co", covariant=True, default=object)
+
+class _ListLikeIterable(Iterable[_T_co], Protocol):
+    pass
+
+def is_list_like(value: object) -> TypeIs[_ListLikeIterable[object]]: ...

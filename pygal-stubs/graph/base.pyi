@@ -1,4 +1,5 @@
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
+from typing import TypeAlias
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
 from lxml.etree import (
@@ -27,11 +28,14 @@ from pygal.view import Margin as Margin
 from pygal.view import View
 from typing_extensions import override
 
+_RawSeries: TypeAlias = list[tuple[Iterable[object], dict[str, object]]]
+
 class BaseGraph:
     config: Config
     state: State
     uuid: str
-    raw_series: list[tuple[object, dict[str, object]]]
+    raw_series: _RawSeries
+
     xml_filters: list[Callable[[object], object]]
     x_label_rotation: float | None
     def __init__(
@@ -43,7 +47,7 @@ class BaseGraph:
     def __getattribute__(self, name: str) -> object: ...
     zero: float
     def prepare_values(
-        self, raw: list[tuple[object, dict[str, object]]], offset: float = 0
+        self, raw: _RawSeries, offset: float = 0
     ) -> list[Serie] | None: ...
     x_labels: list[str] | None
     y_labels: list[str] | None

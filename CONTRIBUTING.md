@@ -6,11 +6,14 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
         - the oldest Python version that is still receiving security updates (currently 3.10, see [Status of Python versions](https://devguide.python.org/versions/))
         - the oldest version of Python that [pygal](https://pypi.org/project/pygal/) supports (currently 3.8)
         - the oldest version of Python that [types-lxml](https://pypi.org/project/types-lxml/) supports (currently 3.9)
-    - _For example_: take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions`.
+        - the oldest version of Python that [typing-extensions] supports (currently 3.9)
+    - Take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions` in Python 3.10.
 - While the stubs themselves are not limited to any particular type checker, when working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
-- Use black to format your changes.
-- Use ruff to lint your changes.
+- Before submitting, please run `hatch check --fix`. This will. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
+- Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
+- If you create any types (including `TypeAlias`es, `Protocol`s, etc.) that do not exist in the source, they should be named with a leading underscore so that end users of pygal don't try to import types that don't exist in that package.
+- If you believe any part of these rules, the content of `pyrightconfig.json`, the ignored linter errors in `pyproject.toml`, etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
 
 # Setup
 > [!NOTE]
@@ -65,13 +68,13 @@ To install dependencies, run the following:
 ```bash
 python -m pip install -e .[dev]
 ```
-This will install **types-lxml** (that regular distributions of this package already have), as well as the following tools:
+This will install the dependencies (typing-extensions, types-lxml, django-types):
 - hatch (for building; this package uses the Hatchling backend)
 - black (for formatting)
 - ruff (for linting)
 - basedpyright (for type checking)
 - pygal (so you have the source available in your venv)
-- lxml (required by some pygal features)
+- lxml, pyquery, Flask, Django and CairoSVG (required by some pygal features)
 
 ## 4. Work and test
 After modifying the stubs, you should run `hatch check --fix`. This will:
@@ -81,7 +84,7 @@ After modifying the stubs, you should run `hatch check --fix`. This will:
 
 Please make sure that there are no type errors, then submit a PR.
 
-# Additional considerantions
+# Additional considerations
 - Once you're done working, you can run `deactivate` to make your shell leave the venv.
 - **Visual Studio Code users beware**: This repository has a `.vscode/settings.json` file that will disable Pylance (Microsoft's proprietary Python language server that comes with the Python extension). Install the **[basedpyright extension](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright)** to regain in-editor type checking.
     - Pylance will remain enabled in all other projects that don't have a `.vscode/settings.json` like this, taking priority over basedpyright.

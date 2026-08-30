@@ -27,14 +27,25 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering :: Visualization",
 ]
-dependencies = ["types-lxml"]
+dependencies = ["typing-extensions", "types-lxml", "django-types"]
 
 [project.urls]
 Repository = "https://github.com/manucorsu/pygal-stubs"
 Issues = "https://github.com/manucorsu/pygal-stubs/issues"
 
 [project.optional-dependencies]
-dev = ["hatch", "black", "ruff", "basedpyright", "pygal", "lxml"]
+dev = [
+    "hatch",
+    "black",
+    "ruff",
+    "basedpyright",
+    "pygal",
+    "lxml",
+    "pyquery",
+    "Flask",
+    "Django",
+    "CairoSVG",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["pygal-stubs"]
