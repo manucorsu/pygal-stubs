@@ -66,6 +66,12 @@ class View:
     @overload
     def __call__(self, xy: tuple[float, float]) -> tuple[float, float]: ...
 
+class ReverseView(View):
+    @overload
+    def y(self, y: None) -> Literal[0]: ...
+    @overload
+    def y(self, y: float) -> float: ...
+
 _Zero: TypeAlias = Literal[0, False]
 
 class LogView(View):

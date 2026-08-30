@@ -2,6 +2,7 @@ from pygal import stats as stats
 from pygal._compat import is_list_like as is_list_like
 from pygal.graph.public import PublicApi as PublicApi
 from pygal.interpolate import INTERPOLATIONS as INTERPOLATIONS
+from pygal.serie import Serie
 from pygal.util import (
     cached_property as cached_property,
 )
@@ -53,5 +54,5 @@ from pygal.view import (
 
 class Graph(PublicApi):
     @property
-    def all_series(self): ...
-    def add_squares(self, squares): ...
+    def all_series(self) -> list[Serie]: ...
+    def add_squares(self, squares: tuple[int, int]) -> tuple[float, float]: ...
