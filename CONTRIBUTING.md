@@ -8,7 +8,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
         - the oldest version of Python that [types-lxml](https://pypi.org/project/types-lxml/) supports (currently 3.9)
         - the oldest version of Python that [typing-extensions] supports (currently 3.9)
     - Take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions` in Python 3.10.
-- While the stubs themselves are not limited to any particular type checker, when working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
+- While the stubs themselves are not limited to any particular type checker, while working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
 - Before submitting, please run `hatch check --fix`. This will. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
 - Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
