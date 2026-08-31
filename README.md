@@ -19,7 +19,7 @@
 >
 > See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
-pygal-stubs is available on [PyPI](). Installation is simple: just do `pip install pygal-stubs`, or however you usually install PyPI packages. Note that this will also install the following dependencies:
+pygal-stubs is available on [PyPI](https://pypi.org/project/pygal-stubs). Installation is simple: just do `pip install pygal-stubs`, or however you usually install PyPI packages. Note that this will also install the following dependencies:
 
 - typing-extensions
 - types-lxml
