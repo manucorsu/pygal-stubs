@@ -13,7 +13,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
 - Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
 - If you create any types (including `TypeAlias`es, `Protocol`s, etc.) that do not exist in the source, they should be named with a leading underscore so that end users of pygal don't try to import types that don't exist in that package.
-- If you believe any part of these rules, the content of `pyrightconfig.json`, the ignored linter errors in `pyproject.toml`, etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
+- If you believe any part of these rules, the ignored linter and type-checking rules in `pyproject.toml`, etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
 
 # Setup
 > [!NOTE]

@@ -39,6 +39,8 @@ dev = [
     "black",
     "ruff",
     "basedpyright",
+    "mypy",
+    "pytest",
     "pygal",
     "lxml",
     "pyquery",
@@ -85,3 +87,6 @@ features = ["dev"]
 [tool.hatch.envs.hatch-check-types.scripts]
 check = "basedpyright {args:.}"
 check-summarize = "basedpyright {args:.}"
+
+[tool.basedpyright]
+reportUnsafeMultipleInheritance = false
