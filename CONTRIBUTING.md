@@ -13,7 +13,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
 - Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
 - If you create any types (including `TypeAlias`es, `Protocol`s, etc.) that do not exist in the source, they should be named with a leading underscore so that end users of pygal don't try to import types that don't exist in that package.
-- If you believe any part of these rules, the ignored linter and type-checking rules in `pyproject.toml`, etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
+- If you believe any part of these rules, the ignored linter and type-checking rules in `pyproject.toml`, the stubtest [allowlist](./allowlist.txt), etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
 
 # Setup
 > [!NOTE]
@@ -64,16 +64,19 @@ call .venv\Scripts\Activate
 ## 3. (in any case) Install dependencies
 After step 2, you should now see `(.venv)` at the beginning of your shell prompt. Running `which python` (\*nix) or `where python` (Windows cmd) should point to the `python` executable inside `.venv` (on Windows it's the first line of `where python`'s output that matters.)
 
-To install dependencies, run the following:
+To install the dependencies required to work on the stubs, run the following:
 ```bash
 python -m pip install -e .[dev]
 ```
-This will install the dependencies (typing-extensions, types-lxml, django-types):
+This will install the regular dependencies (typing-extensions, types-lxml, django-types) as well as the following tools:
 - hatch (for building; this package uses the Hatchling backend)
 - black (for formatting)
 - ruff (for linting)
 - basedpyright (for type checking)
-- pygal (so you have the source available in your venv)
+- mypy (for stubtest)
+    - (yes, this means that the stubs will go through both basedpyright and mypy static analysis)
+- pytest (for unit testing)
+- pygal (you must have it in the environment for stubtest to work)
 - lxml, pyquery, Flask, Django and CairoSVG (required by some pygal features)
 
 ## 4. Work and test

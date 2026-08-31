@@ -3,7 +3,7 @@ from typing import TypeVar, overload
 from pygal._compat import timestamp as timestamp
 from pygal.adapters import positive as positive
 from pygal.graph.xy import XY as XY
-from datetime import datetime, time, timedelta
+from datetime import datetime, date, time, timedelta
 
 _T = TypeVar("_T")
 
@@ -17,6 +17,10 @@ def datetime_to_timestamp(
 def datetime_to_time(x: datetime) -> time: ...
 @overload
 def datetime_to_time(x: _T) -> _T: ...
+@overload
+def date_to_datetime(x: date) -> datetime: ...
+@overload
+def date_to_datetime(x: _T) -> _T: ...
 @overload
 def time_to_datetime(x: time) -> datetime: ...
 @overload

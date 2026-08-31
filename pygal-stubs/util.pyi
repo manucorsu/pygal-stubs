@@ -58,7 +58,7 @@ class cached_property(Generic[_T, _R]):
     def __get__(
         self,
         obj: _T | None,
-        type_: _T | None,
+        type_: _T | None = None,
     ) -> _R | cached_property[_T, _R]: ...
 
 css_comments: Pattern[str]

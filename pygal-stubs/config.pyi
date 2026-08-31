@@ -8,6 +8,8 @@ from pygal.style import DefaultStyle as DefaultStyle
 from pygal.style import Style as Style
 from typing_extensions import Self
 
+import builtins
+
 CONFIG_ITEMS: list[Key[object, object | None]]
 callable = FunctionType
 _T = TypeVar("_T", default=object)
@@ -15,20 +17,20 @@ _SubtypeT = TypeVar("_SubtypeT", default=None)
 
 class Key(Generic[_T, _SubtypeT]):
     value: _T | tuple[object, ...] | None
-    type: type[_T] | Callable[..., _T]
+    type: builtins.type[_T] | Callable[..., _T]
     doc: str
     category: str
     subdoc: str
-    subtype: type[_SubtypeT] | Callable[[str], _SubtypeT] | None
+    subtype: builtins.type[_SubtypeT] | Callable[[str], _SubtypeT] | None
     name: str
     def __init__(
         self,
         default_value: _T | Callable[..., _T],
-        type_: type[_T] | Callable[..., _T],
+        type_: builtins.type[_T] | Callable[..., _T],
         category: str,
         doc: str,
         subdoc: str = "",
-        subtype: type[_SubtypeT] | Callable[[str], _SubtypeT] | None = None,
+        subtype: builtins.type[_SubtypeT] | Callable[[str], _SubtypeT] | None = None,
     ) -> None: ...
     @property
     def is_boolean(self) -> bool: ...
@@ -66,7 +68,7 @@ class CommonConfig(BaseConfig):
     formatter: Callable[..., str] | None
 
 class Config(CommonConfig):
-    style: type[Style] | Style
+    style: builtins.type[Style] | Style
     css: list[str]
     classes: list[str]
     defs: list[str]

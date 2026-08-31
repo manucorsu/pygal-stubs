@@ -83,41 +83,41 @@ class HorizontalView(View):
     def y(self, y: float) -> float | None: ...
 
 class PolarView(View):
-    @overload
+    @overload  # type: ignore[override]
     def __call__(
         self, rhotheta: tuple[None, object] | tuple[object, None]
     ) -> tuple[None, None]: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(self, rhotheta: tuple[float, float]) -> tuple[float, float]: ...
 
 class PolarLogView(View):
-    @overload
+    @overload  # type: ignore[override]
     def __call__(
         self, rhotheta: tuple[None, object] | tuple[object, None]
     ) -> tuple[None, None]: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(self, rhotheta: tuple[float, float]) -> tuple[float, float]: ...
 
 class PolarThetaView(View):
     def __init__(
         self, width: float, height: float, box: Box, aperture: float = ...
     ) -> None: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(
         self, rhotheta: tuple[None, object] | tuple[object, None]
     ) -> tuple[None, None]: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(self, rhotheta: tuple[float, float]) -> tuple[float, float]: ...
 
 class PolarThetaLogView(View):
     def __init__(
         self, width: float, height: float, box: Box, aperture: float = ...
     ) -> None: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(
         self, rhotheta: tuple[None, object] | tuple[object, None]
     ) -> tuple[None, None]: ...
-    @overload
+    @overload  # type: ignore[override]
     def __call__(self, rhotheta: tuple[float, float]) -> tuple[float, float]: ...
 
 _Zero: TypeAlias = Literal[0, False]

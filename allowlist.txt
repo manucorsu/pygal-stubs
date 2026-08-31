@@ -1,0 +1,12 @@
+# pygal ships its own test suite inside the installed package; it's not
+# part of the public API and we don't stub it.
+^pygal\.test(\..*)?$
+
+# pygal.config.*: every setting is declared as a `Key(...)` descriptor at
+# class-definition time. At runtime, stubtest introspects the class body
+# and sees `Key[Any, Any]` — the descriptor object itself — not the
+# resolved value a real caller gets back after Key's __get__/__set__
+# magic runs. We deliberately stub these attributes as their resolved
+# value type (bool, list[str], etc.), which is what every real usage
+# actually interacts with, not the internal descriptor mechanism.
+^pygal\.config\.\w*Config\.\w+$
