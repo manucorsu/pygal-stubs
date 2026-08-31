@@ -10,11 +10,12 @@
 - A replacement for [pygal's documentation](https://www.pygal.org/en/stable/documentation/index.html), which should always be considered the source of truth when using pygal.
 ## Installation
 > [!IMPORTANT]
-> This package currently supports **Python 3.10 and higher**
+> This package currently supports **Python 3.10 and higher**.
 >
 > **Python versions are supported until [their EOL](https://devguide.python.org/versions/)**.
 >
 > This means that **Python 3.10 support will be dropped on November 1, 2026.**
+>
 > See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
 pygal-stubs is available on [PyPI](). Installation is simple: just do `pip install pygal-stubs`, or however you usually install PyPI packages. Note that this will also install the following dependencies:
