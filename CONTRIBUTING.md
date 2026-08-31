@@ -6,7 +6,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
         - the oldest Python version that is still receiving security updates (currently 3.10, see [Status of Python versions](https://devguide.python.org/versions/))
         - the oldest version of Python that [pygal](https://pypi.org/project/pygal/) supports (currently 3.8)
         - the oldest version of Python that [types-lxml](https://pypi.org/project/types-lxml/) supports (currently 3.9)
-        - the oldest version of Python that [typing-extensions] supports (currently 3.9)
+        - the oldest version of Python that [typing-extensions](https://pypi.org/project/typing-extensions/) supports (currently 3.9)
     - Take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions` in Python 3.10.
 - While the stubs themselves are not limited to any particular type checker, while working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
 - Before submitting, please run `hatch check --fix`. This will. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
