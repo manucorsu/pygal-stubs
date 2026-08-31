@@ -9,7 +9,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
         - the oldest version of Python that [typing-extensions](https://pypi.org/project/typing-extensions/) supports (currently 3.9)
     - Take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions` in Python 3.10.
 - While the stubs themselves are not limited to any particular type checker, while working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
-- Before submitting, please run `hatch check --fix`. This will. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
+- Before submitting, please run `hatch run check:all`. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
 - Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
 - If you create any types (including `TypeAlias`es, `Protocol`s, etc.) that do not exist in the source, they should be named with a leading underscore so that end users of pygal don't try to import types that don't exist in that package.
@@ -75,15 +75,17 @@ This will install the regular dependencies (typing-extensions, types-lxml, djang
 - basedpyright (for type checking)
 - mypy (for stubtest)
     - (yes, this means that the stubs will go through both basedpyright and mypy static analysis)
-- pytest (for unit testing)
 - pygal (you must have it in the environment for stubtest to work)
 - lxml, pyquery, Flask, Django and CairoSVG (required by some pygal features)
 
 ## 4. Work and test
-After modifying the stubs, you should run `hatch check --fix`. This will:
-- Format with black
-- Fix linting with ruff
-- Give you a summary of any type errors (from basedpyright) and linter errors that couldn't be auto-fixed (from ruff)
+After modifying the stubs, you should run `hatch run check:all`. This will:
+- Run the ruff linter, auto-fixing when possible
+- Run the black formatter
+- Run basedpyright
+- (install the stubs in the venv, then) run stubtest
+    - as previously stated, this will also run mypy
+
 
 Please make sure that there are no type errors, then submit a PR.
 

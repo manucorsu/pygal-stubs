@@ -1,9 +1,9 @@
+from datetime import date, datetime, time, timedelta
 from typing import TypeVar, overload
 
 from pygal._compat import timestamp as timestamp
 from pygal.adapters import positive as positive
 from pygal.graph.xy import XY as XY
-from datetime import datetime, date, time, timedelta
 
 _T = TypeVar("_T")
 

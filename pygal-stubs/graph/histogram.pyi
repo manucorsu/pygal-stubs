@@ -1,5 +1,3 @@
-from typing_extensions import override
-
 from pygal.graph.bar import Bar as Bar
 from pygal.graph.dual import Dual as Dual
 from pygal.serie import Serie
@@ -12,6 +10,7 @@ from pygal.util import (
 from pygal.util import (
     decorate as decorate,
 )
+from typing_extensions import override
 
 class Histogram(Dual, Bar):
     @cached_property

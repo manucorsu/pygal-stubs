@@ -40,7 +40,6 @@ dev = [
     "ruff",
     "basedpyright",
     "mypy",
-    "pytest",
     "pygal",
     "lxml",
     "pyquery",
@@ -65,28 +64,19 @@ exclude = '/(\.git|\.venv|\.mypy_cache|\.ruff_cache|\.pytest_cache)/'
 # "Function argument is shadowing a Python builtin",
 # "Class name should use CapWords convention"
 
-[tool.hatch.envs.hatch-check-code]
+[tool.hatch.envs.check]
 features = ["dev"]
 
-[tool.hatch.envs.hatch-check-code.scripts]
-lint-check = "ruff check {args:.}"
-lint-fix = "ruff check --fix {args:.}"
-
-
-[tool.hatch.envs.hatch-check-fmt]
-features = ["dev"]
-
-[tool.hatch.envs.hatch-check-fmt.scripts]
-format-check = "black --check --diff {args:.}"
-format-fix = "black {args:.}"
-
-
-[tool.hatch.envs.hatch-check-types]
-features = ["dev"]
-
-[tool.hatch.envs.hatch-check-types.scripts]
-check = "basedpyright {args:.}"
-check-summarize = "basedpyright {args:.}"
+[tool.hatch.envs.check.scripts]
+all = [
+    "ruff check --fix .",
+    "black .",
+    "basedpyright",
+    "pip uninstall -y pygal-stubs",
+    "pip install .",
+    "python -m mypy.stubtest pygal --allowlist allowlist.txt",
+]
 
 [tool.basedpyright]
 reportUnsafeMultipleInheritance = false
+reportUnusedCallResult = false

@@ -1,21 +1,21 @@
-from collections.abc import Iterable, Mapping, Callable
-from typing import Literal, overload
-from pyquery import PyQuery  # type: ignore[import-untyped] # pyright: ignore[reportMissingTypeStubs]
-from typing_extensions import LiteralString, Self
-
-from pygal._compat import is_list_like as is_list_like
-from pygal.graph.base import BaseGraph as BaseGraph
-
+from collections.abc import Callable, Iterable, Mapping
+from os import PathLike
+from typing import Literal, TypeAlias, overload
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
+import flask
+from django.http import HttpResponse as _DjangoHttpResponse
 from lxml.etree import (
     Element as _LxmlElement,
 )
-import flask
-from django.http import HttpResponse as _DjangoHttpResponse
-from os import PathLike
+from pygal._compat import is_list_like as is_list_like
+from pygal.graph.base import BaseGraph as BaseGraph
+from pyquery import (  # type: ignore[import-untyped] # pyright: ignore[reportMissingTypeStubs]
+    PyQuery,
+)
+from typing_extensions import LiteralString, Self
 
-_FilePath = (
+_FilePath: TypeAlias = (
     int | str | bytes | PathLike[str] | PathLike[bytes]
 )  # anything open()'s file parameter will take
 
