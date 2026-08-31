@@ -7,7 +7,8 @@
 - It may not be (almost certainly isn't) 100% accurate. If you spot a mistake and know how to fix it, [submit a PR](./CONTRIBUTING.md); If you don't, open an issue.
 - (Per the [LICENSE](./LICENSE), this package comes with no warranty whatsoever, however there is one thing we know for a fact will not work at all) **This package is not suitable for contributing to pygal itself**. If you try to open pygal's source with pygal-stubs installed and your type checker on `"strict"`, you will almost certainly get type-checking errors and could potentially be **misled as to the real types of the objects you're dealing with**.
     - This package is aimed at the _end users_ of pygal and as such reflects the types that appear in the public API, which might differ from implementation details.
-- A replacement for [pygal's documentation](https://www.pygal.org/en/stable/documentation/index.html), which should always be considered the source of truth when using pygal.
+- These stubs are not intended for use with any particular type checker, however, they were written while using [basedpyright](https://github.com/DetachHead/basedpyright) and were tested more thoroughly with it than with any other type checker. If you have a specific issue with another type checker, please [submit a PR](./CONTRIBUTING.md) or open an issue. 
+- (obviously) This isn't replacement for [pygal's documentation](https://www.pygal.org/en/stable/documentation/index.html), which should always be considered the source of truth when using pygal.
 ## Installation
 > [!IMPORTANT]
 > This package currently supports **Python 3.10 and higher**.
@@ -25,3 +26,5 @@ pygal-stubs is available on [PyPI](). Installation is simple: just do `pip insta
 - django-types
 
 typing-extensions is required to backport modern typing features to the older Python versions we support. The others are type stubs for pygal's optional dependencies, which would've otherwise caused `Unknown` or `Any` to propagate in some parts of the stubs.
+
+**Please note** that you don't actually install the optional dependencies themselves, **you will get `ImportError`s at runtime** if you try to use the pygal features that require them even if the type checker tells you the _types_ are available.
