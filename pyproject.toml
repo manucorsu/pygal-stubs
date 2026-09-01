@@ -52,6 +52,7 @@ dev = [
 packages = ["pygal-stubs"]
 
 [tool.hatch.envs.default]
+python = "3.10"
 path = ".venv"
 features = ["dev"]
 

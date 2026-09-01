@@ -16,7 +16,10 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
 - If you believe any part of these rules, the ignored linter and type-checking rules in [pyproject.toml](./pyproject.toml), the stubtest [allowlist](./allowlist.txt), etc. should be changed, please open an issue: The rules should make this package and its development better, not hinder it.
 
 # Setup
-## 1. Install everything you need with Hatch
+## 1. Fork and clone
+Fork the repository and clone your fork. Make a new branch for your changes and work there.
+
+## 2. Install everything you need with Hatch
 This project uses the **Hatchling backend** alongside the **Hatch project manager**.
 
 All you need to do is
@@ -39,16 +42,17 @@ This will:
 - pygal (you must have it in the environment for stubtest to work)
 - lxml, pyquery, Flask, Django and CairoSVG (required by some pygal features)
 
-## 2. Work and test
+## 3. Work and test
 After modifying the stubs, you should run `hatch run check:all`. This will:
 - Run the ruff linter, auto-fixing when possible
 - Run the black formatter
 - Run basedpyright
 - Install the updated stubs in the venv, then run stubtest
 
-Please make sure that there are no type errors, then submit a PR.
+Please make sure that there are no type errors, then submit a PR (requesting to merge your fork's branch to the [manucorsu/pygal-stubs](https://github.com/manucorsu/pygal-stubs)' `main` branch).
 
 # Additional considerations
+- Once you're done working, use `exit` to leave the shell. You don't need to manually deactivate the venv.
 - **Visual Studio Code users beware**: This repository has a `.vscode/settings.json` file that will disable Pylance (Microsoft's proprietary Python language server that comes with the Python extension). Install the **[basedpyright extension](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright)** to regain in-editor type checking.
     - Pylance will remain enabled in all other projects that don't have a `.vscode/settings.json` like this, taking priority over basedpyright.
     - _Users of non-proprietary releases (i.e. VSCodium or built from source), and forks (i.e Antigravity IDE) don't need to worry about this because Microsoft does not make Pylance available to them. You should still make sure you're using basedpyright and not another language server like pyrefly._
