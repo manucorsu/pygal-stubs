@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from pygal.graph.graph import Graph as Graph
 from pygal.serie import Serie
 from pygal.util import (
@@ -10,6 +12,6 @@ from pygal.util import (
     decorate as decorate,
 )
 
-class Line(Graph):
+class Line(Graph[Sequence[float]]):
     def __init__(self, *args: object, **kwargs: object) -> None: ...
     def line(self, serie: Serie, rescale: bool = False) -> None: ...

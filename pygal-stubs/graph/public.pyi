@@ -1,6 +1,6 @@
 from collections.abc import Callable, Iterable, Mapping
 from os import PathLike
-from typing import Literal, TypeAlias, overload
+from typing import Generic, Literal, TypeAlias, TypeVar, overload
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
 import flask
@@ -19,11 +19,15 @@ _FilePath: TypeAlias = (
     int | str | bytes | PathLike[str] | PathLike[bytes]
 )  # anything open()'s file parameter will take
 
-class PublicApi(BaseGraph):
+_ValueT = TypeVar(
+    "_ValueT", default=Iterable[object] | Mapping[object, object] | object
+)
+
+class PublicApi(BaseGraph, Generic[_ValueT]):
     def add(
         self,
         title: str,
-        values: Iterable[object] | Mapping[object, object] | object,
+        values: _ValueT,
         **kwargs: object,
     ) -> Self: ...
     def __call__(self, *args: object, **kwargs: object) -> Self: ...

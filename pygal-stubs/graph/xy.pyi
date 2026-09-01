@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from pygal.graph.dual import Dual as Dual
 from pygal.graph.line import Line as Line
 from pygal.util import (
@@ -10,7 +12,7 @@ from pygal.util import (
     ident as ident,
 )
 
-class XY(Line, Dual):
+class XY(Line, Dual[Sequence[float]]):
     @cached_property
     def xvals(self) -> list[float]: ...
     @cached_property
