@@ -12,7 +12,7 @@ from pygal.util import (
     ident as ident,
 )
 
-class XY(Line, Dual[Sequence[float]]):
+class XY(Line, Dual[Sequence[float | None]]):
     @cached_property
     def xvals(self) -> list[float]: ...
     @cached_property

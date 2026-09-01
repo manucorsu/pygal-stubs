@@ -12,6 +12,5 @@ from pygal.util import (
     decorate as decorate,
 )
 
-class Line(Graph[Sequence[float]]):
-    def __init__(self, *args: object, **kwargs: object) -> None: ...
+class Line(Graph[Sequence[float | None]]):
     def line(self, serie: Serie, rescale: bool = False) -> None: ...

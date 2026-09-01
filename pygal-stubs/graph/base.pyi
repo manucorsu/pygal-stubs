@@ -26,7 +26,6 @@ from pygal.util import ident as ident
 from pygal.view import Box as Box
 from pygal.view import Margin as Margin
 from pygal.view import View
-from typing_extensions import override
 
 _RawSeries: TypeAlias = list[tuple[Iterable[object], dict[str, object]]]
 
@@ -41,16 +40,14 @@ class BaseGraph:
     def __init__(
         self, config: Config | type[Config] | None = None, **kwargs: object
     ) -> None: ...
-    @override
-    def __setattr__(self, name: str, value: object) -> None: ...
-    @override
-    def __getattribute__(self, name: str) -> object: ...
     zero: float
     def prepare_values(
         self, raw: _RawSeries, offset: float = 0
     ) -> list[Serie] | None: ...
-    x_labels: list[str] | None
-    y_labels: list[str] | None
+    x_labels: (
+        Iterable[str] | None
+    )  # Why not Sequence? This example in the docs: (https://www.pygal.org/en/stable/documentation/types/line.html) feeds it a `map()` returned value
+    y_labels: Iterable[str] | None
     style: Style
     series: list[Serie]
     secondary_series: list[Serie]

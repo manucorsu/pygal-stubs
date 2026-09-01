@@ -63,6 +63,7 @@ _ValueT = TypeVar(
 )
 
 class Graph(PublicApi[_ValueT], Generic[_ValueT]):
+    title: str | None
     @override
     def __init__(
         self,
