@@ -51,6 +51,10 @@ dev = [
 [tool.hatch.build.targets.wheel]
 packages = ["pygal-stubs"]
 
+[tool.hatch.envs.default]
+path = ".venv"
+features = ["dev"]
+
 [tool.black]
 target-version = ["py310"]
 line-length = 88
