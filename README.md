@@ -19,12 +19,55 @@
 >
 > See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
-pygal-stubs is available on [PyPI](https://pypi.org/project/pygal-stubs). Installation is simple: just do `pip install pygal-stubs`, or however you usually install PyPI packages. Note that this will also install the following dependencies:
+pygal-stubs is available on [PyPI](https://pypi.org/project/pygal-stubs). Install it with:
 
-- typing-extensions
-- types-lxml
-- django-types
+```bash
+pip install pygal-stubs
+```
 
-typing-extensions is required to backport modern typing features to the older Python versions we support. The others are type stubs for pygal's optional dependencies, which would've otherwise caused `Unknown` or `Any` to propagate in some parts of the stubs.
+Or however you usually install PyPI packages.
 
-**Please note** that you don't actually install the optional dependencies themselves, **you will get `ImportError`s at runtime** if you try to use the pygal features that require them even if the type checker tells you the _types_ are available.
+This will automatically install the following type dependencies:
+- `typing-extensions`: Backports modern typing features to all supported Python versions.
+- `types-lxml` & `django-types`: Stubs for pygal's optional dependencies to prevent `Any` / `Unknown` from leaking into your codebase.
+
+> [!WARNING]
+> This package only installs the **type stubs**, not the optional runtime libraries themselves. If your code uses pygal features that rely on `lxml` or `django`, ensure you install those packages separately to avoid runtime `ImportError`s.
+
+## Usage
+If you already use a strict type checker, existing pygal code will continue to work. However, we recommend the following approach when configuring graphs:
+
+1. **If the attribute is in the `__init__` signature**: Pass it as a keyword argument during instantiation.
+2. **If the attribute is NOT in the `__init__` signature**: Assign it post-instantiation on the graph object (the pygal documentation way).
+
+### Recommended Pattern
+
+```python
+# 1. Pass attributes in the __init__ signature during instantiation:
+line_chart = pygal.Line(
+    title="Browser usage evolution (in %)",
+    x_labels=map(str, range(2002, 2013)),
+)
+
+# 2. For options not present in the __init__ signature, assign them on the instance:
+line_chart.interpolate = "cubic"
+```
+
+The most common attributes are explicitly typed as keyword arguments in `__init__`. Options not present in `__init__` will fall into unchecked `**kwargs: object` if passed at instantiation, but **are type-checked when assigned directly on the instance**.
+
+If an attribute you use frequently is missing from a graph's `__init__` signature, please [submit a PR](./CONTRIBUTING.md) to add it.
+
+---
+
+#### Why pass config as kwargs instead of mutating attributes?
+pygal defines config attributes dynamically at runtime via `__setattr__`. To support autocomplete and type checking on instance attributes, the stubs declare them on the class. However, accessing an unset attribute before writing to it will pass type checking (`str | None`), but **raises an `AttributeError` at runtime**:
+
+```python
+line_chart = pygal.Line()
+ttl = line_chart.title  # Type checker sees `str | None`, but Python raises AttributeError!
+```
+
+Passing attributes directly to `__init__` avoids this trap. (If you know a cleaner way to model this in type stubs, please [submit a PR](./CONTRIBUTING.md)!)
+
+#### Why aren't all config attributes typed on `BaseGraph.__init__`?
+pygal's documentation lists every config attribute in a single `Config` class, regardless of whether it applies to a given chart type. If all attributes were declared globally on `BaseGraph`, every graph class' `__init__` signature would be polluted with irrelevant options.

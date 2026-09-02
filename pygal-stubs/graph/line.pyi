@@ -1,5 +1,6 @@
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 
+from pygal import Config
 from pygal.graph.graph import Graph as Graph
 from pygal.serie import Serie
 from pygal.util import (
@@ -13,4 +14,16 @@ from pygal.util import (
 )
 
 class Line(Graph[Sequence[float | None]]):
+    def __init__(
+        self,
+        config: Config | type[Config] | None = None,
+        *,
+        title: str | None = None,
+        x_labels: Iterable[str] | None = None,
+        x_labels_major: Iterable[str] | None = None,
+        x_label_rotation: float | None = None,
+        range: tuple[float, float] | list[float] | None = None,
+        fill: bool | None = None,
+        **kwargs: object,
+    ) -> None: ...
     def line(self, serie: Serie, rescale: bool = False) -> None: ...

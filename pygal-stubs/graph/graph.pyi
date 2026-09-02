@@ -1,7 +1,6 @@
 from collections.abc import Iterable, Mapping
 from typing import Generic
 
-from pygal import Config
 from pygal import stats as stats
 from pygal._compat import is_list_like as is_list_like
 from pygal.graph.public import PublicApi as PublicApi
@@ -55,7 +54,7 @@ from pygal.view import (
 from pygal.view import (
     XYLogView as XYLogView,
 )
-from typing_extensions import TypeVar, override
+from typing_extensions import TypeVar
 
 _ValueT = TypeVar(
     "_ValueT",
@@ -63,15 +62,6 @@ _ValueT = TypeVar(
 )
 
 class Graph(PublicApi[_ValueT], Generic[_ValueT]):
-    title: str | None
-    @override
-    def __init__(
-        self,
-        config: Config | type[Config] | None = None,
-        *,
-        title: str | None = None,
-        **kwargs: object,
-    ) -> None: ...
     @property
     def all_series(self) -> list[Serie]: ...
     def add_squares(self, squares: tuple[int, int]) -> tuple[float, float]: ...
