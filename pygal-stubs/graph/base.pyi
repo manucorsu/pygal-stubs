@@ -35,6 +35,7 @@ class BaseGraph:
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        x_labels: Iterable[str] | None = None,
         **kwargs: object,
     ) -> None: ...
     def prepare_values(

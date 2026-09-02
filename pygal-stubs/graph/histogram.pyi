@@ -1,3 +1,6 @@
+from collections.abc import Sequence
+from typing import TypeAlias
+
 from pygal.graph.bar import Bar as Bar
 from pygal.graph.dual import Dual as Dual
 from pygal.serie import Serie
@@ -12,7 +15,9 @@ from pygal.util import (
 )
 from typing_extensions import override
 
-class Histogram(Dual, Bar):
+_HistValue: TypeAlias = tuple[float | None, float | None, float | None]
+
+class Histogram(Dual[Sequence[_HistValue]], Bar[Sequence[_HistValue]]):
     @cached_property
     def xvals(self) -> list[float]: ...
     @cached_property
