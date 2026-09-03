@@ -1,3 +1,7 @@
+from collections.abc import Iterable, Sequence
+from typing import TypeVar
+
+from pygal.config import Config
 from pygal.graph.graph import Graph as Graph
 from pygal.serie import Serie
 from pygal.util import (
@@ -15,5 +19,16 @@ from pygal.util import (
 from pygal.view import ReverseView as ReverseView
 from pygal.view import View as View
 
-class Dot(Graph):
+_XLabelT = TypeVar("_XLabelT", default=str)
+
+class Dot(Graph[Sequence[float], _XLabelT]):
+    def __init__(
+        self,
+        config: Config | type[Config] | None = None,
+        *,
+        title: str | None = None,
+        x_labels: Iterable[_XLabelT] | None = None,
+        x_label_rotation: float | None = None,
+        **kwargs: object,
+    ) -> None: ...
     def dot(self, serie: Serie, r_max: float) -> None: ...

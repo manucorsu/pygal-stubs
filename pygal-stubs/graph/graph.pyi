@@ -1,4 +1,4 @@
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable
 from typing import Generic
 
 from pygal import stats as stats
@@ -58,7 +58,7 @@ from typing_extensions import TypeVar
 
 _ValueT = TypeVar(
     "_ValueT",
-    default=Iterable[object] | Mapping[object, object] | object,
+    default=Iterable[float | None],
 )
 _XLabelT = TypeVar("_XLabelT", default=str)
 

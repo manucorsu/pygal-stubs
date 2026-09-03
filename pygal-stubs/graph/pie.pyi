@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from pygal import Config
 from pygal.adapters import none_to_zero as none_to_zero
 from pygal.adapters import positive as positive
@@ -6,7 +8,7 @@ from pygal.serie import Serie
 from pygal.util import alter as alter
 from pygal.util import decorate as decorate
 
-class Pie(Graph):
+class Pie(Graph[float | Sequence[float]]):
     def __init__(
         self,
         config: Config | type[Config] | None = None,
