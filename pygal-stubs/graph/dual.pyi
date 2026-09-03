@@ -9,5 +9,6 @@ _ValueT = TypeVar(
     "_ValueT",
     default=Iterable[object] | Mapping[object, object] | object,
 )
+_XLabelT = TypeVar("_XLabelT", default=str)
 
-class Dual(Graph[_ValueT], Generic[_ValueT]): ...
+class Dual(Graph[_ValueT, _XLabelT], Generic[_ValueT, _XLabelT]): ...

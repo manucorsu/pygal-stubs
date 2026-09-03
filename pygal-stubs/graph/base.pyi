@@ -1,5 +1,5 @@
 from collections.abc import Callable, Iterable
-from typing import Literal, TypeAlias
+from typing import Generic, Literal, TypeAlias, TypeVar
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
 from lxml.etree import (
@@ -28,14 +28,15 @@ from pygal.view import Margin as Margin
 from pygal.view import View
 
 _RawSeries: TypeAlias = list[tuple[Iterable[object], dict[str, object]]]
+_XLabelT = TypeVar("_XLabelT", default=str)
 
-class BaseGraph:
+class BaseGraph(Generic[_XLabelT]):
     def __init__(
         self,
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
-        x_labels: Iterable[str] | None = None,
+        x_labels: Iterable[_XLabelT] | None = None,
         **kwargs: object,
     ) -> None: ...
     def prepare_values(
@@ -104,7 +105,7 @@ class BaseGraph:
     #  but then multiple docs example pass
     #  map which is defintiely not a list
     #  or Sequence so we use Iterable)
-    x_labels: Iterable[str] | None
+    x_labels: Iterable[_XLabelT] | None
     x_labels_major: Iterable[str] | None
     x_labels_major_every: int | None
     x_labels_major_count: int | None

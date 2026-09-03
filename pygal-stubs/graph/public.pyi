@@ -22,8 +22,9 @@ _FilePath: TypeAlias = (
 _ValueT = TypeVar(
     "_ValueT", default=Iterable[object] | Mapping[object, object] | object
 )
+_XLabelT = TypeVar("_XLabelT", default=str)
 
-class PublicApi(BaseGraph, Generic[_ValueT]):
+class PublicApi(BaseGraph[_XLabelT], Generic[_ValueT, _XLabelT]):
     def add(
         self,
         title: str,

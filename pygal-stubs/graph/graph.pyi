@@ -60,8 +60,9 @@ _ValueT = TypeVar(
     "_ValueT",
     default=Iterable[object] | Mapping[object, object] | object,
 )
+_XLabelT = TypeVar("_XLabelT", default=str)
 
-class Graph(PublicApi[_ValueT], Generic[_ValueT]):
+class Graph(PublicApi[_ValueT, _XLabelT], Generic[_ValueT, _XLabelT]):
     @property
     def all_series(self) -> list[Serie]: ...
     def add_squares(self, squares: tuple[int, int]) -> tuple[float, float]: ...

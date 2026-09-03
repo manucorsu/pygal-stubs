@@ -37,7 +37,10 @@ This will automatically install the following type dependencies:
 Note that this package only installs the **type stubs**, not the optional runtime libraries themselves. If your code uses pygal features that rely on `lxml` or `django`, ensure you install those packages separately to avoid runtime `ImportError`s.
 
 ## Usage
-If you already use a strict type checker, existing pygal code will continue to work. However, there is one key implementation detail you must know: Graph attributes (used to configure graphs) are set dynamically at runtime via `__setattr__`, not defined explicitly on `__init__`. This means that **if you try to access a Graph attribute you haven't set explicitly, you'll get an `AttributeError` at runtime** that type checkers (and these stubs) have no way of knowing about.
+> [!IMPORTANT]
+> TLDR: **Avoid reading Graph config attributes if possible**. If you have to do it anyways, **ALWAYS use a `try-except` block to handle potential `AttributeError`**.
+
+If you already use a strict type checker, existing pygal code will continue to work. However, there is one key detail you must know: Graph attributes (used to configure graphs) are set dynamically at runtime via `__setattr__`, not defined explicitly on `__init__`. This means that **if you try to access a Graph attribute you haven't set explicitly, you'll get an `AttributeError` at runtime** that type checkers (and these stubs) have no way of knowing about.
 
 For example:
 ```python
