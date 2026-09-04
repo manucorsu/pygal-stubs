@@ -34,7 +34,7 @@ This will automatically install the following type dependencies:
 - `typing-extensions`: Backports modern typing features to all supported Python versions.
 - `types-lxml` & `django-types`: Stubs for pygal's optional dependencies to prevent `Any` / `Unknown` from leaking into your codebase.
 
-Note that this package only installs the **type stubs**, not the optional runtime libraries themselves. If your code uses pygal features that rely on `lxml` or `django`, ensure you install those packages separately to avoid runtime `ImportError`s.
+Note that this package only installs the **type stubs**, not the optional runtime libraries themselves. If your code uses pygal features that rely on `lxml` or `django`, ensure you install those packages separately to avoid runtime `ImportError`s. Same thing goes for the **maps**: We provide stubs for the World Map ([pygal_maps_world_neo](https://github.com/manucorsu/pygal_maps_world_neo)), but if you want to use the maps, you'll need to install the library itself or you will get a runtime error.
 
 ## Usage
 > [!IMPORTANT]

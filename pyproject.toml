@@ -47,6 +47,7 @@ dev = [
     "Flask",
     "Django",
     "CairoSVG",
+    "pygal_maps_world_neo",
 ]
 
 [tool.hatch.build.targets.wheel]
