@@ -40,7 +40,7 @@ This will:
 - mypy (for stubtest)
     - _yes, this means that the stubs will go through both basedpyright and mypy_
 - pygal (you must have it in the environment for stubtest to work)
-- lxml, pyquery, Flask, Django, CairoSVG and pygal_maps_world_neo (required by some pygal features)
+- lxml, pyquery, Flask, Django and CairoSVG (required by some pygal features)
 
 ## 3. Work and test
 After modifying the stubs, you should run `hatch run check:all`. This will:
