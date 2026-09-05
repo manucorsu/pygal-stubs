@@ -79,3 +79,12 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
         formatter: Callable[[object], str] | None = None,
         **kwargs: object,
     ) -> Self: ...
+    @override
+    def render_table(
+        self,
+        *,
+        style: bool | None = None,
+        total: bool | None = None,
+        transpose: bool | None = None,
+        **kwargs: object,
+    ) -> str: ...
