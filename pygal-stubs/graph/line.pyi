@@ -15,7 +15,7 @@ from pygal.util import (
 from pygal.util import (
     decorate as decorate,
 )
-from typing_extensions import Self, override
+from typing_extensions import LiteralString, Self, override
 
 class _AxisLabelsDict(TypedDict):
     label: str
@@ -103,3 +103,19 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         allow_interruptions: bool | None = None,
         **kwargs: object,
     ) -> Self: ...
+    @override
+    def render_sparkline(
+        self,
+        *,
+        width: int | None = None,
+        height: int | None = None,
+        show_dots: bool | None = None,
+        show_x_labels: bool | None = None,
+        show_y_labels: bool | None = None,
+        **kwargs: object,
+    ) -> str: ...
+    @override
+    def render_sparktext(
+        self,
+        relative_to: float | None = None,
+    ) -> Literal[""] | LiteralString: ...
