@@ -29,6 +29,15 @@ class Bar(Graph[_ValueT, _XLabelT]):
         title: str | None = None,
         style: Style | type[Style] | None = None,
         x_labels: Iterable[_XLabelT] | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        explicit_size: bool | None = None,
+        spacing: int | None = None,
+        margin: int | None = None,
+        margin_top: int | None = None,
+        margin_right: int | None = None,
+        margin_bottom: int | None = None,
+        margin_left: int | None = None,
         **kwargs: object,
     ) -> None: ...
     def bar(self, serie: Serie, rescale: bool = False) -> None: ...

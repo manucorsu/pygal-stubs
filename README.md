@@ -59,13 +59,17 @@ line.title = "My Title" # This is fine
 We have also added the more popular (the ones found in the docs + a couple of others) attributes to the `__init__` method stubs, so you can assign them directly at instantiation:
 
 ```python
-# Instead of:
 import pygal
+# Instead of:
 line = pygal.Line()
 line.title = "My Title"
 
+# or:
+config = pygal.Config()
+config.title = "My Title"
+line = pygal.Line(config)
+
 # You can do:
-import pygal
 line = pygal.Line(title="My Title")
 ```
 

@@ -36,7 +36,6 @@ class BaseGraph(Generic[_XLabelT]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
-        
         style: Style | type[Style] | None = None,
         **kwargs: object,
     ) -> None: ...
@@ -103,9 +102,8 @@ class BaseGraph(Generic[_XLabelT]):
     half_pie: bool
     reverse_direction: bool
     # (labels are declared as list in Config,
-    #  but then multiple docs example pass
-    #  map which is defintiely not a list
-    #  or Sequence so we use Iterable)
+    #  but then multiple docs examples pass
+    #  map which is incompatible with Sequence
     x_labels: Iterable[_XLabelT] | None
     x_labels_major: Iterable[str] | None
     x_labels_major_every: int | None
