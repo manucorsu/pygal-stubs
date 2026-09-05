@@ -1,6 +1,7 @@
 from collections.abc import Callable, Iterable, Sequence
 from datetime import date, datetime, time, timedelta
-from typing import Generic, TypedDict, TypeVar, overload
+from types import EllipsisType
+from typing import Generic, Literal, TypedDict, TypeVar, overload
 
 from pygal._compat import timestamp as timestamp
 from pygal.adapters import positive as positive
@@ -62,6 +63,7 @@ class DateLine(
         x_title: str | None = None,
         y_title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         x_labels: Iterable[str | date] | None = None,
         x_labels_major: Iterable[str] | None = None,
         x_labels_major_every: int | None = None,
@@ -81,10 +83,35 @@ class DateLine(
         fill: bool | None = None,
         x_value_formatter: Callable[..., str] | None = None,
         show_legend: bool | None = None,
+        human_readable: bool | None = None,
         legend_at_bottom: bool | None = None,
         legend_at_bottom_columns: int | None = None,
         legend_box_size: int | None = None,
         truncate_legend: int | None = None,
+        include_x_axis: bool | None = None,
+        inverse_y_axis: bool | None = None,
+        xrange: tuple[float, float] | list[float] | None = None,
+        secondary_range: tuple[float, float] | list[float] | None = None,
+        logarithmic: bool | None = None,
+        min_scale: int | None = None,
+        max_scale: int | None = None,
+        order_min: int | None = None,
+        interpolate: (
+            Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+        ) = None,
+        interpolation_precision: int | None = None,
+        interpolation_parameters: dict[str, object] | None = None,
+        value_formatter: Callable[..., str] | None = None,
+        tooltip_border_radius: int | None = None,
+        stroke: bool | None = None,
+        zero: float | None = None,
+        show_only_major_dots: bool | None = None,
+        dots_size: int | None = None,
+        stroke_style: dict[str, object] | None = None,
+        show_x_guides: bool | None = None,
+        show_y_guides: bool | None = None,
+        css: Sequence[str] | tuple[EllipsisType, str] | None = None,
+        classes: Sequence[str] | tuple[EllipsisType, str] | None = None,
         **kwargs: object,
     ) -> None: ...
 

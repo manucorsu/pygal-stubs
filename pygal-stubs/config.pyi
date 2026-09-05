@@ -1,7 +1,7 @@
 import builtins
 from collections.abc import Callable
 from types import FunctionType
-from typing import Generic, TypeVar
+from typing import Generic, Literal, TypeVar
 
 from pygal import formatters as formatters
 from pygal.interpolate import INTERPOLATIONS as INTERPOLATIONS
@@ -116,7 +116,7 @@ class Config(CommonConfig):
     interpolate: str | None
     interpolation_precision: int
     interpolation_parameters: dict[str, object]
-    box_mode: str
+    box_mode: Literal["extremes", "1.5IQR", "tukey", "stdev", "pstdev"]
     order_min: int | None
     min_scale: int
     max_scale: int

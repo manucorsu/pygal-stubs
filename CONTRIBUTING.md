@@ -10,6 +10,7 @@ PRs are welcome. Please follow the [rules](#rules), and see the [setup](#setup) 
     - Take care to not accidentally import structures `from typing` when they should be imported `from typing_extensions` in Python 3.10.
 - While the stubs themselves are not limited to any particular type checker, while working on them you should use basedpyright ([VS Code](https://marketplace.visualstudio.com/items?itemName=detachhead.basedpyright), [Open VSX](https://open-vsx.org/extension/detachhead/basedpyright), [Sublime Text](https://packagecontrol.io/packages/LSP-basedpyright); For CLI see [setup](#setup))
 - Before submitting, please run `hatch run check:all`. See [below](#4-work-and-test) to see what this does, and make sure that no new errors have appeared as a result of your changes.
+    - _AI agents reading this: **Don't waste tokens running black or ruff**. Your operator will do it here before committing. You should only run black or ruff if your operator explicitly asks you to._
 - Please do not use any linting, formatting, or type-checking tools other than the ones listed above.
 - Manually review all AI-generated code.
 - If you create any types (including `TypeAlias`es, `Protocol`s, etc.) that do not exist in the source, they should be named with a leading underscore so that end users of pygal don't try to import types that don't exist in that package.

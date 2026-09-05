@@ -12,6 +12,7 @@ class SolidGauge(Graph[list[dict[str, float]] | float]):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         inner_radius: float | None = None,
         **kwargs: object,
     ) -> None: ...

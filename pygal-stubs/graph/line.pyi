@@ -1,5 +1,6 @@
 from collections.abc import Callable, Iterable, Sequence
-from typing import Generic, TypedDict, TypeVar
+from types import EllipsisType
+from typing import Generic, Literal, TypedDict, TypeVar
 
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
@@ -32,6 +33,7 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         x_title: str | None = None,
         y_title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         x_labels: Iterable[_XLabelT] | None = None,
         x_labels_major: Iterable[str] | None = None,
         x_labels_major_every: int | None = None,
@@ -55,6 +57,30 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         legend_at_bottom_columns: int | None = None,
         legend_box_size: int | None = None,
         truncate_legend: int | None = None,
+        include_x_axis: bool | None = None,
+        inverse_y_axis: bool | None = None,
+        xrange: tuple[float, float] | list[float] | None = None,
+        secondary_range: tuple[float, float] | list[float] | None = None,
+        logarithmic: bool | None = None,
+        min_scale: int | None = None,
+        max_scale: int | None = None,
+        order_min: int | None = None,
+        interpolate: (
+            Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+        ) = None,
+        interpolation_precision: int | None = None,
+        interpolation_parameters: dict[str, object] | None = None,
+        value_formatter: Callable[..., str] | None = None,
+        tooltip_border_radius: int | None = None,
+        stroke: bool | None = None,
+        zero: float | None = None,
+        show_only_major_dots: bool | None = None,
+        dots_size: int | None = None,
+        stroke_style: dict[str, object] | None = None,
+        show_x_guides: bool | None = None,
+        show_y_guides: bool | None = None,
+        css: Sequence[str] | tuple[EllipsisType, str] | None = None,
+        classes: Sequence[str] | tuple[EllipsisType, str] | None = None,
         **kwargs: object,
     ) -> None: ...
     def line(self, serie: Serie, rescale: bool = False) -> None: ...

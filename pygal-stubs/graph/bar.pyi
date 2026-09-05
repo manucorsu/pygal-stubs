@@ -1,5 +1,5 @@
 from collections.abc import Iterable, Sequence
-from typing import TypeVar
+from typing import Literal, TypeVar
 
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
@@ -29,6 +29,7 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         x_labels: Iterable[_XLabelT] | None = None,
         width: int | None = None,
         height: int | None = None,
@@ -39,6 +40,14 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
         margin_right: int | None = None,
         margin_bottom: int | None = None,
         margin_left: int | None = None,
+        print_values: bool | None = None,
+        dynamic_print_values: bool | None = None,
+        print_values_position: Literal["top", "bottom"] | str | None = None,
+        print_zeroes: bool | None = None,
+        print_labels: bool | None = None,
+        human_readable: bool | None = None,
+        no_data_text: str | None = None,
+        rounded_bars: int | None = None,
         **kwargs: object,
     ) -> None: ...
     def bar(self, serie: Serie, rescale: bool = False) -> None: ...

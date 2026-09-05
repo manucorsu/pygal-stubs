@@ -1,4 +1,5 @@
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Iterable, Sequence
+from types import EllipsisType
 from typing import Generic, Literal, TypeAlias, TypeVar
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
@@ -38,6 +39,7 @@ class BaseGraph(Generic[_XLabelT, _YLabelT]):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         **kwargs: object,
     ) -> None: ...
     def prepare_values(
@@ -77,8 +79,8 @@ class BaseGraph(Generic[_XLabelT, _YLabelT]):
     formatter: Callable[..., str] | None
 
     # from Config (excluding duplicates)
-    css: list[str]
-    classes: list[str]
+    css: Sequence[str] | tuple[EllipsisType, str]
+    classes: Sequence[str] | tuple[EllipsisType, str]
     defs: list[str]
     title: str | None
     x_title: str | None
@@ -124,7 +126,7 @@ class BaseGraph(Generic[_XLabelT, _YLabelT]):
     logarithmic: bool
     interpolation_precision: int
     interpolation_parameters: dict[str, object]
-    box_mode: str
+    box_mode: Literal["extremes", "1.5IQR", "tukey", "stdev", "pstdev"]
     order_min: int | None
     min_scale: int
     max_scale: int

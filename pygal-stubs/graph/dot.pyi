@@ -28,6 +28,7 @@ class Dot(Graph[Sequence[float], _XLabelT, _YLabelT]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        pretty_print: bool | None = None,
         x_labels: Iterable[_XLabelT] | None = None,
         x_label_rotation: float | None = None,
         **kwargs: object,

@@ -28,6 +28,7 @@ class Gauge(Graph[float]):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         human_readable: bool | None = None,
         reverse_direction: bool | None = None,
         **kwargs: object,

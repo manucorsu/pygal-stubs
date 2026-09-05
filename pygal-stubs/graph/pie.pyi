@@ -16,6 +16,7 @@ class Pie(Graph[float | Sequence[float]]):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
         inner_radius: float | None = None,
         half_pie: bool | None = None,
         **kwargs: object,

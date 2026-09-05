@@ -1,8 +1,11 @@
-from collections.abc import Sequence
-from typing import Generic, TypedDict, TypeVar
+from collections.abc import Callable, Iterable, Sequence
+from types import EllipsisType
+from typing import Generic, Literal, TypedDict, TypeVar
 
+from pygal import Config
 from pygal.adapters import none_to_zero as none_to_zero
 from pygal.graph.line import Line as Line
+from pygal.style import Style
 
 class _AxisLabelsDict(TypedDict):
     label: str
@@ -14,4 +17,63 @@ _YLabelT = TypeVar("_YLabelT", default=str | float | _AxisLabelsDict)
 
 class StackedLine(
     Line[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabelT]
-): ...
+):
+    def __init__(
+        self,
+        config: Config | type[Config] | None = None,
+        *,
+        title: str | None = None,
+        x_title: str | None = None,
+        y_title: str | None = None,
+        style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
+        x_labels: Iterable[_XLabelT] | None = None,
+        x_labels_major: Iterable[str] | None = None,
+        x_labels_major_every: int | None = None,
+        x_labels_major_count: int | None = None,
+        show_minor_x_labels: bool | None = None,
+        x_label_rotation: float | None = None,
+        show_x_labels: bool | None = None,
+        y_labels: Iterable[_YLabelT] | None = None,
+        y_labels_major: Iterable[str] | None = None,
+        y_labels_major_every: int | None = None,
+        y_labels_major_count: int | None = None,
+        show_y_labels: bool | None = None,
+        show_minor_y_labels: bool | None = None,
+        y_label_rotation: float | None = None,
+        truncate_label: int | None = None,
+        range: tuple[float, float] | list[float] | None = None,
+        fill: bool | None = None,
+        x_value_formatter: Callable[..., str] | None = None,
+        show_legend: bool | None = None,
+        legend_at_bottom: bool | None = None,
+        legend_at_bottom_columns: int | None = None,
+        legend_box_size: int | None = None,
+        truncate_legend: int | None = None,
+        include_x_axis: bool | None = None,
+        inverse_y_axis: bool | None = None,
+        xrange: tuple[float, float] | list[float] | None = None,
+        secondary_range: tuple[float, float] | list[float] | None = None,
+        logarithmic: bool | None = None,
+        min_scale: int | None = None,
+        max_scale: int | None = None,
+        order_min: int | None = None,
+        interpolate: (
+            Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+        ) = None,
+        interpolation_precision: int | None = None,
+        interpolation_parameters: dict[str, object] | None = None,
+        value_formatter: Callable[..., str] | None = None,
+        tooltip_border_radius: int | None = None,
+        stroke: bool | None = None,
+        zero: float | None = None,
+        show_only_major_dots: bool | None = None,
+        dots_size: int | None = None,
+        stroke_style: dict[str, object] | None = None,
+        show_x_guides: bool | None = None,
+        show_y_guides: bool | None = None,
+        css: Sequence[str] | tuple[EllipsisType, str] | None = None,
+        classes: Sequence[str] | tuple[EllipsisType, str] | None = None,
+        stack_from_top: bool | None = None,
+        **kwargs: object,
+    ) -> None: ...

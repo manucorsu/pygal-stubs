@@ -1,5 +1,5 @@
-from collections.abc import Sequence
-from typing import Generic, TypeVar
+from collections.abc import Iterable, Sequence
+from typing import Generic, Literal, TypeVar
 
 from pygal import Config
 from pygal.adapters import positive as positive
@@ -21,7 +21,25 @@ class Pyramid(HorizontalGraph[Sequence[float | None]], VerticalPyramid):
         *,
         title: str | None = None,
         style: Style | type[Style] | None = None,
+        pretty_print: bool | None = None,
+        x_labels: Iterable[str] | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        explicit_size: bool | None = None,
+        spacing: int | None = None,
+        margin: int | None = None,
+        margin_top: int | None = None,
+        margin_right: int | None = None,
+        margin_bottom: int | None = None,
+        margin_left: int | None = None,
+        print_values: bool | None = None,
+        dynamic_print_values: bool | None = None,
+        print_values_position: Literal["top", "bottom"] | str | None = None,
+        print_zeroes: bool | None = None,
+        print_labels: bool | None = None,
         human_readable: bool | None = None,
+        no_data_text: str | None = None,
         legend_at_bottom: bool | None = None,
+        rounded_bars: int | None = None,
         **kwargs: object,
     ) -> None: ...
