@@ -50,6 +50,11 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         range: tuple[float, float] | list[float] | None = None,
         fill: bool | None = None,
         x_value_formatter: Callable[..., str] | None = None,
+        show_legend: bool | None = None,
+        legend_at_bottom: bool | None = None,
+        legend_at_bottom_columns: int | None = None,
+        legend_box_size: int | None = None,
+        truncate_legend: int | None = None,
         **kwargs: object,
     ) -> None: ...
     def line(self, serie: Serie, rescale: bool = False) -> None: ...

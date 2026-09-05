@@ -1,4 +1,4 @@
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from datetime import date, datetime, time, timedelta
 from typing import Generic, TypedDict, TypeVar, overload
 
@@ -59,8 +59,32 @@ class DateLine(
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        x_title: str | None = None,
+        y_title: str | None = None,
         style: Style | type[Style] | None = None,
         x_labels: Iterable[str | date] | None = None,
+        x_labels_major: Iterable[str] | None = None,
+        x_labels_major_every: int | None = None,
+        x_labels_major_count: int | None = None,
+        show_minor_x_labels: bool | None = None,
+        x_label_rotation: float | None = None,
+        show_x_labels: bool | None = None,
+        y_labels: Iterable[_YLabelT] | None = None,
+        y_labels_major: Iterable[str] | None = None,
+        y_labels_major_every: int | None = None,
+        y_labels_major_count: int | None = None,
+        show_y_labels: bool | None = None,
+        show_minor_y_labels: bool | None = None,
+        y_label_rotation: float | None = None,
+        truncate_label: int | None = None,
+        range: tuple[float, float] | list[float] | None = None,
+        fill: bool | None = None,
+        x_value_formatter: Callable[..., str] | None = None,
+        show_legend: bool | None = None,
+        legend_at_bottom: bool | None = None,
+        legend_at_bottom_columns: int | None = None,
+        legend_box_size: int | None = None,
+        truncate_legend: int | None = None,
         **kwargs: object,
     ) -> None: ...
 
