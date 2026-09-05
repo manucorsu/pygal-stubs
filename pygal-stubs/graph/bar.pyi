@@ -1,5 +1,5 @@
 from collections.abc import Callable, Iterable, Sequence
-from typing import Literal, TypeVar
+from typing import Literal, TypedDict, TypeVar
 
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
@@ -17,9 +17,25 @@ from pygal.util import (
 from pygal.util import (
     swap as swap,
 )
-from typing_extensions import Self, override
+from typing_extensions import NotRequired, Self, override
 
-_ValueT = TypeVar("_ValueT", default=float | None | Sequence[float | None])
+class _LinkDict(TypedDict):
+    href: str
+    target: NotRequired[Literal["_blank", "_self", "_parent", "_top"]]
+
+class _ConfidenceIntervalDict(TypedDict):
+    type: Literal["continuous", "dichotomous"]
+    sample_size: int
+    stddev: NotRequired[float]
+    confidence: NotRequired[float]
+
+class _ValueDict(TypedDict):
+    value: float
+    label: NotRequired[str]
+    xlink: NotRequired[str | _LinkDict]
+    ci: NotRequired[_ConfidenceIntervalDict]
+
+_ValueT = TypeVar("_ValueT", default=float | None | Sequence[float | None | _ValueDict])
 _XLabelT = TypeVar("_XLabelT", default=str)
 _YLabelT = TypeVar("_YLabelT", default=str | float)
 
@@ -49,6 +65,7 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
         human_readable: bool | None = None,
         no_data_text: str | None = None,
         rounded_bars: int | None = None,
+        value_formatter: Callable[[object], str] | None = None,
         **kwargs: object,
     ) -> None: ...
     def bar(self, serie: Serie, rescale: bool = False) -> None: ...

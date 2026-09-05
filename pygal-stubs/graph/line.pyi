@@ -21,7 +21,11 @@ class _AxisLabelsDict(TypedDict):
     label: str
     value: float
 
-_ValueT = TypeVar("_ValueT", default=Sequence[float | None])
+class _ValueNodePair(TypedDict):
+    value: float
+    node: dict[str, object]
+
+_ValueT = TypeVar("_ValueT", default=Sequence[float | None | _ValueNodePair])
 _XLabelT = TypeVar("_XLabelT", default=str)
 _YLabelT = TypeVar("_YLabelT", default=str | float | _AxisLabelsDict)
 
