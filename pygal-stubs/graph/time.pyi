@@ -6,6 +6,7 @@ from pygal._compat import timestamp as timestamp
 from pygal.adapters import positive as positive
 from pygal.config import Config
 from pygal.graph.xy import XY as XY
+from pygal.style import Style
 
 _T = TypeVar("_T")
 
@@ -50,6 +51,7 @@ class DateLine(DateTimeLine[Sequence[tuple[date, float]], str | date]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        style: Style | type[Style] | None = None,
         x_labels: Iterable[str | date] | None = None,
         **kwargs: object,
     ) -> None: ...

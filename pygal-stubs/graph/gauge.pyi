@@ -1,6 +1,7 @@
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
 from pygal.serie import Serie
+from pygal.style import Style
 from pygal.util import (
     alter as alter,
 )
@@ -26,6 +27,7 @@ class Gauge(Graph[float]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        style: Style | type[Style] | None = None,
         human_readable: bool | None = None,
         reverse_direction: bool | None = None,
         **kwargs: object,

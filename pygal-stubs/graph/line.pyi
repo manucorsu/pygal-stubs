@@ -4,6 +4,7 @@ from typing import Generic, TypeVar
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
 from pygal.serie import Serie
+from pygal.style import Style
 from pygal.util import (
     alter as alter,
 )
@@ -23,6 +24,9 @@ class Line(Graph[_ValueT, _XLabelT], Generic[_ValueT, _XLabelT]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        x_title: str | None = None,
+        y_title: str | None = None,
+        style: Style | type[Style] | None = None,
         x_labels: Iterable[str] | None = None,
         x_labels_major: Iterable[str] | None = None,
         x_label_rotation: float | None = None,

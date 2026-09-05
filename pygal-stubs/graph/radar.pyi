@@ -19,5 +19,4 @@ from pygal.util import (
 from pygal.view import PolarLogView as PolarLogView
 from pygal.view import PolarView as PolarView
 
-class Radar(Line):
-    def __init__(self, *args: object, **kwargs: object) -> None: ...
+class Radar(Line): ...

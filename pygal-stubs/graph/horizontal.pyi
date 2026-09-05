@@ -16,4 +16,3 @@ _ValueT = TypeVar(
 
 class HorizontalGraph(Graph[_ValueT], Generic[_ValueT]):
     horizontal: bool
-    def __init__(self, *args: object, **kwargs: object) -> None: ...

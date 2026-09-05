@@ -36,6 +36,8 @@ class BaseGraph(Generic[_XLabelT]):
         config: Config | type[Config] | None = None,
         *,
         title: str | None = None,
+        
+        style: Style | type[Style] | None = None,
         **kwargs: object,
     ) -> None: ...
     def prepare_values(
