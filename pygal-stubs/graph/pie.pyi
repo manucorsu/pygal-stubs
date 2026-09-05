@@ -8,6 +8,7 @@ from pygal.serie import Serie
 from pygal.style import Style
 from pygal.util import alter as alter
 from pygal.util import decorate as decorate
+from typing_extensions import Self, override
 
 class Pie(Graph[float | Sequence[float]]):
     def __init__(
@@ -22,3 +23,12 @@ class Pie(Graph[float | Sequence[float]]):
         **kwargs: object,
     ) -> None: ...
     def slice(self, serie: Serie, start_angle: float, total: float) -> float: ...
+    @override
+    def add(
+        self,
+        title: str,
+        values: float | Sequence[float] | None,
+        *,
+        inner_radius: float | None = None,
+        **kwargs: object,
+    ) -> Self: ...

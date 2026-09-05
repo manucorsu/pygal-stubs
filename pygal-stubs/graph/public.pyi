@@ -1,6 +1,6 @@
 from collections.abc import Callable, Iterable, Mapping
 from os import PathLike
-from typing import Generic, Literal, TypeAlias, TypeVar, overload
+from typing import Any, Generic, Literal, TypeAlias, TypeVar, overload
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
 import flask
@@ -30,7 +30,7 @@ class PublicApi(BaseGraph[_XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         self,
         title: str,
         values: _ValueT,
-        **kwargs: object,
+        **kwargs: Any,  # pyright: ignore[reportExplicitAny, reportAny]
     ) -> Self: ...
     def __call__(self, *args: object, **kwargs: object) -> Self: ...
     def add_xml_filter(

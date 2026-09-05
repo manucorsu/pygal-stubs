@@ -1,4 +1,4 @@
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from typing import Literal, TypeVar
 
 from pygal import Config
@@ -17,6 +17,7 @@ from pygal.util import (
 from pygal.util import (
     swap as swap,
 )
+from typing_extensions import Self, override
 
 _ValueT = TypeVar("_ValueT", default=float | None | Sequence[float | None])
 _XLabelT = TypeVar("_XLabelT", default=str)
@@ -51,3 +52,13 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
         **kwargs: object,
     ) -> None: ...
     def bar(self, serie: Serie, rescale: bool = False) -> None: ...
+    @override
+    def add(
+        self,
+        title: str,
+        values: _ValueT,
+        *,
+        rounded_bars: int | None = None,
+        formatter: Callable[[object], str] | None = None,
+        **kwargs: object,
+    ) -> Self: ...

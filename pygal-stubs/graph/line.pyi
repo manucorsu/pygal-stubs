@@ -15,6 +15,7 @@ from pygal.util import (
 from pygal.util import (
     decorate as decorate,
 )
+from typing_extensions import Self, override
 
 class _AxisLabelsDict(TypedDict):
     label: str
@@ -84,3 +85,17 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         **kwargs: object,
     ) -> None: ...
     def line(self, serie: Serie, rescale: bool = False) -> None: ...
+    @override
+    def add(
+        self,
+        title: str,
+        values: _ValueT,
+        *,
+        secondary: bool | None = None,
+        show_dots: bool | None = None,
+        show_only_major_dots: bool | None = None,
+        dots_size: int | None = None,
+        stroke_style: dict[str, object] | None = None,
+        allow_interruptions: bool | None = None,
+        **kwargs: object,
+    ) -> Self: ...
