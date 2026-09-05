@@ -23,8 +23,9 @@ _ValueT = TypeVar(
     "_ValueT", default=Iterable[object] | Mapping[object, object] | object
 )
 _XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float)
 
-class PublicApi(BaseGraph[_XLabelT], Generic[_ValueT, _XLabelT]):
+class PublicApi(BaseGraph[_XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabelT]):
     def add(
         self,
         title: str,

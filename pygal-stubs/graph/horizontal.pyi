@@ -13,6 +13,10 @@ _ValueT = TypeVar(
     "_ValueT",
     default=Iterable[object] | Mapping[object, object] | object,
 )
+_XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float)
 
-class HorizontalGraph(Graph[_ValueT], Generic[_ValueT]):
+class HorizontalGraph(
+    Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabelT]
+):
     horizontal: bool

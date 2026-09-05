@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Generic, TypeVar
+from typing import Generic, TypedDict, TypeVar
 
 from pygal import Config
 from pygal.graph.dual import Dual as Dual
@@ -15,13 +15,18 @@ from pygal.util import (
     ident as ident,
 )
 
+class _AxisLabelsDict(TypedDict):
+    label: str
+    value: float
+
 _XYValueT = TypeVar("_XYValueT", default=Sequence[tuple[float | None, float | None]])
-_XLabelT = TypeVar("_XLabelT", default=str)
+_XLabelT = TypeVar("_XLabelT", default=str | float | _AxisLabelsDict)
+_YLabelT = TypeVar("_YLabelT", default=str | float | _AxisLabelsDict)
 
 class XY(
-    Line[_XYValueT, _XLabelT],
-    Dual[_XYValueT, _XLabelT],
-    Generic[_XYValueT, _XLabelT],
+    Line[_XYValueT, _XLabelT, _YLabelT],
+    Dual[_XYValueT, _XLabelT, _YLabelT],
+    Generic[_XYValueT, _XLabelT, _YLabelT],
 ):
     def __init__(
         self,

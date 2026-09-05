@@ -29,8 +29,9 @@ from pygal.view import View
 
 _RawSeries: TypeAlias = list[tuple[Iterable[object], dict[str, object]]]
 _XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float)
 
-class BaseGraph(Generic[_XLabelT]):
+class BaseGraph(Generic[_XLabelT, _YLabelT]):
     def __init__(
         self,
         config: Config | type[Config] | None = None,
@@ -110,7 +111,7 @@ class BaseGraph(Generic[_XLabelT]):
     x_labels_major_count: int | None
     show_x_labels: bool
     show_minor_x_labels: bool
-    y_labels: Iterable[float] | None
+    y_labels: Iterable[_YLabelT] | None
     y_labels_major: Iterable[str] | None
     y_labels_major_every: int | None
     y_labels_major_count: int | None

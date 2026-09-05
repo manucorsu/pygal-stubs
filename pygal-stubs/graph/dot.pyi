@@ -20,8 +20,9 @@ from pygal.view import ReverseView as ReverseView
 from pygal.view import View as View
 
 _XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float)
 
-class Dot(Graph[Sequence[float], _XLabelT]):
+class Dot(Graph[Sequence[float], _XLabelT, _YLabelT]):
     def __init__(
         self,
         config: Config | type[Config] | None = None,

@@ -20,8 +20,9 @@ from pygal.util import (
 
 _ValueT = TypeVar("_ValueT", default=float | None | Sequence[float | None])
 _XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float)
 
-class Bar(Graph[_ValueT, _XLabelT]):
+class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
     def __init__(
         self,
         config: Config | type[Config] | None = None,

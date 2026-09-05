@@ -1,6 +1,6 @@
 from collections.abc import Iterable, Sequence
 from datetime import date, datetime, time, timedelta
-from typing import TypeVar, overload
+from typing import Generic, TypedDict, TypeVar, overload
 
 from pygal._compat import timestamp as timestamp
 from pygal.adapters import positive as positive
@@ -40,12 +40,20 @@ def time_to_seconds(x: str) -> str: ...
 def time_to_seconds(x: float) -> float: ...
 def seconds_to_time(x: float) -> time: ...
 
+class _AxisLabelsDict(TypedDict):
+    label: str
+    value: float
+
 _DatetimeValueT = TypeVar("_DatetimeValueT", default=Sequence[tuple[datetime, float]])
 _XLabelT = TypeVar("_XLabelT", default=str)
+_YLabelT = TypeVar("_YLabelT", default=str | float | _AxisLabelsDict)
 
-class DateTimeLine(XY[_DatetimeValueT, _XLabelT]): ...
+class DateTimeLine(XY[_DatetimeValueT, _XLabelT, _YLabelT]): ...
 
-class DateLine(DateTimeLine[Sequence[tuple[date, float]], str | date]):
+class DateLine(
+    DateTimeLine[Sequence[tuple[date, float]], str | date, _YLabelT],
+    Generic[_YLabelT],
+):
     def __init__(
         self,
         config: Config | type[Config] | None = None,
@@ -56,5 +64,9 @@ class DateLine(DateTimeLine[Sequence[tuple[date, float]], str | date]):
         **kwargs: object,
     ) -> None: ...
 
-class TimeLine(DateTimeLine[Sequence[tuple[time, float]]]): ...
-class TimeDeltaLine(XY[Sequence[tuple[timedelta, float]]]): ...
+class TimeLine(
+    DateTimeLine[Sequence[tuple[time, float]], str, _YLabelT], Generic[_YLabelT]
+): ...
+class TimeDeltaLine(
+    XY[Sequence[tuple[timedelta, float]], str, _YLabelT], Generic[_YLabelT]
+): ...
