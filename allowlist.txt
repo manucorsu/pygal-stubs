@@ -10,3 +10,7 @@
 # value type (bool, list[str], etc.), which is what every real usage
 # actually interacts with, not the internal descriptor mechanism.
 ^pygal\.config\.\w*Config\.\w+$
+
+# AnyGraph does not exist at runtime; we define it in the stubs.
+# This is intentional and documented.
+pygal.AnyGraph

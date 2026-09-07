@@ -1,0 +1,2 @@
+# 3.1.3.2
+- Added the `AnyGraph` type alias to `__init__.pyi`. It is a union of all `Graph` subclasses and can be used for static typing purposes. **It does not exist at runtime** and should never ever ever be used for `isinstance` for example.

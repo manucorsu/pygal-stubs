@@ -44,6 +44,7 @@ This package **does not include stubs for the separately packaged map modules**.
 [^1]: I cannot currently work on stubs for other map modules (both the documented France and Switzerland maps nor the various non-Kozea ones you can find on PyPI). If you want to make your own type stubs for those, you're more than welcome to do so using pygal-stubs and my world map stubs as a base. If you'd like those stubs to be compatible with pygal-stubs and a mistake in the definition of BaseMap is causing problems, please [submit a PR](https://github.com/manucorsu/pygal-stubs/blob/main/CONTRIBUTING.md). Once you're done making your type stubs, make an issue so I can add your wonderful contribution to this README for all pygal-stubs users to see.
 
 ## Usage
+### ~~Reading~~ and writing Graph attributes
 > [!IMPORTANT]
 > TLDR: **Avoid reading Graph config attributes if possible**. If you have to do it anyways, **ALWAYS use a `try-except` block to handle potential `AttributeError`**.
 
@@ -82,7 +83,40 @@ line = pygal.Line(title="My Title")
 
 Values that aren't in the `__init__` signature will be assigned just fine, but **they won't be type checked** as you'll be falling back to the untyped `**kwargs`. If you believe that more attributes should be added to an `__init__` method signature, please [submit a PR](https://github.com/manucorsu/pygal-stubs/blob/main/CONTRIBUTING.md). This paragraph also applies to some other methods (e.g. `add`)
 
-### Why is this?
+#### Why is this?
 pygal does not define which attributes each specific Graph type requires, instead providing all attributes, for all graphs, in the massive [CommonConfig and Config classes](https://github.com/manucorsu/pygal-stubs/blob/main/pygal-stubs/config.pyi) for documentation purposes. Then, at runtime, all attributes are assigned arbitrarily (via `__setattr__` from either explicit `instance.attr = val` asignment from the user or at instantiation time from the constructor `**kwargs`) to the graph instances.
 
 This means that if we wanted type-checking for these values (instead of accepting anything for any key like `__setattr__` normally does), we had to basically hardcode _all_ config attributes for all graphs as properties of `BaseGraph`, the class that all graphs inherit from. If you know a better way to do this without erasing type checking for these attributes, please [submit a PR](https://github.com/manucorsu/pygal-stubs/blob/main/CONTRIBUTING.md)
+
+### Graphs are now generic
+
+`Graph`, the base class that all pygal graphs inherit from directly or indirectly, is now generic in `ValueT`, `XLabelT`, and `YLabelT` (with defaults `Iterable[float]`, `str` and `str` respectively). For most usages this information is not relevant (the values you try to `add` will be checked for satisfaction of your specific chart class' `_ValueT`), but this pattern could cause **unexpected behaviour in code that can deal with multiple graph types**.
+
+For example, say that you want to create a function that takes any pygal graph and renders it in the browser. Since all pygal graphs inherit from Graph, you might think of hinting it like this:
+```python
+import pygal
+
+def render_any_graph(g: pygal.Graph) -> None:
+    g.render_in_browser()
+```
+
+But this is **wrong**. If you try to pass a graph instance whose values and labels types aren't exactly the same as Graph's defaults (see above), **you will get a type checking error**. An instance of `Pie`, for example, defines its `_ValueT` as `Sequence[float] | float`, which is not `Iterable[float]` and will therefore be rejected by the type checker.
+
+Your options for typing code that needs to accept multiple graph types are: 
+1. Narrow down the accepted types to only the graphs you need to handle, e.g.
+```
+def render_bar_or_line(g: pygal.Bar | pygal.Line) -> None:
+    g.render_in_browser()
+```
+
+2. Only if you truly need to accept _all_ pygal graphs, you can use `AnyGraph`, a type alias (union of Graph and all its subclasses provided by pygal-stubs for convenience, but does not exist at runtime) to represent all graph types:
+```python
+from pygal import AnyGraph
+
+def render_any_graph(g: AnyGraph) -> None:
+    g.render_in_browser()
+```
+
+> [!WARNING]
+> As mentioned previously **AnyGraph does not exist at runtime** and trying to use it for anything that isn't static type checking (e.g. `isinstance`, `issubclass`, `issubtype`...) will result in an error being raised at runtime.
+

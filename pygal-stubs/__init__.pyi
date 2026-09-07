@@ -1,5 +1,6 @@
 from collections.abc import Sequence
 from types import ModuleType
+from typing import TypeAlias
 
 from pygal import maps as maps
 from pygal import style as style
@@ -67,6 +68,42 @@ from .__about__ import (
 from .__about__ import (
     __version__ as __version__,
 )
+
+AnyGraph: TypeAlias = (
+    Graph
+    | Bar
+    | BaseMap
+    | Box
+    | DateLine
+    | DateTimeLine
+    | Dot
+    | Funnel
+    | Gauge
+    | Histogram
+    | HorizontalBar
+    | HorizontalLine
+    | HorizontalStackedBar
+    | HorizontalStackedLine
+    | Line
+    | Pie
+    | Pyramid
+    | Radar
+    | SolidGauge
+    | StackedBar
+    | StackedLine
+    | TimeDeltaLine
+    | TimeLine
+    | Treemap
+    | VerticalPyramid
+    | XY
+)
+"""
+Union type of all pygal graph types.
+
+**This type is defined by pygal-stubs and does not exist in pygal.**
+
+As such, it is **unusable at runtime and can ONLY be used for static analysis purposes.**
+"""
 
 CHARTS_BY_NAME: dict[str, type[Graph]]
 CHARTS_NAMES: list[str]
