@@ -15,17 +15,19 @@ from pygal.util import (
 from pygal.util import (
     decorate as decorate,
 )
-from typing_extensions import LiteralString, Self, override
+from typing_extensions import LiteralString, NotRequired, Self, override
 
 class _AxisLabelsDict(TypedDict):
     label: str
     value: float
 
-class _ValueNodePair(TypedDict):
-    value: float
-    node: dict[str, object]
+class _ValueDict(TypedDict):
+    value: float | None
+    node: NotRequired[dict[str, object]]
+    label: NotRequired[str]
+    color: NotRequired[str]
 
-_ValueT = TypeVar("_ValueT", default=Sequence[float | None | _ValueNodePair])
+_ValueT = TypeVar("_ValueT", default=Sequence[float | None | _ValueDict])
 _XLabelT = TypeVar("_XLabelT", default=str)
 _YLabelT = TypeVar("_YLabelT", default=str | float | _AxisLabelsDict)
 
@@ -47,7 +49,7 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         x_label_rotation: float | None = None,
         show_x_labels: bool | None = None,
         y_labels: Iterable[_YLabelT] | None = None,
-        y_labels_major: Iterable[str] | None = None,
+        y_labels_major: Iterable[str | float] | None = None,
         y_labels_major_every: int | None = None,
         y_labels_major_count: int | None = None,
         show_y_labels: bool | None = None,
@@ -71,7 +73,7 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         max_scale: int | None = None,
         order_min: int | None = None,
         interpolate: (
-            Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+            Literal["quadratic", "cubic", "hermite", "lagrange", "trigonometric"] | None
         ) = None,
         interpolation_precision: int | None = None,
         interpolation_parameters: dict[str, object] | None = None,
@@ -101,6 +103,8 @@ class Line(Graph[_ValueT, _XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         dots_size: int | None = None,
         stroke_style: dict[str, object] | None = None,
         allow_interruptions: bool | None = None,
+        fill: bool | None = None,
+        dot: bool | None = None,
         **kwargs: object,
     ) -> Self: ...
     @override

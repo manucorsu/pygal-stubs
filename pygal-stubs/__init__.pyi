@@ -2,6 +2,7 @@ from collections.abc import Sequence
 from types import ModuleType
 
 from pygal import maps as maps
+from pygal import style as style
 from pygal.config import Config as Config
 from pygal.graph.bar import Bar as Bar
 from pygal.graph.box import Box as Box

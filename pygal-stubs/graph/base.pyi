@@ -63,7 +63,7 @@ class BaseGraph(Generic[_XLabelT, _YLabelT]):
     margin_box: Margin
     view: View | None
     interpolate: (
-        Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+        Literal["quadratic", "cubic", "hermite", "lagrange", "trigonometric"] | None
     )
 
     # from CommonConfig
@@ -114,7 +114,7 @@ class BaseGraph(Generic[_XLabelT, _YLabelT]):
     show_x_labels: bool
     show_minor_x_labels: bool
     y_labels: Iterable[_YLabelT] | None
-    y_labels_major: Iterable[str] | None
+    y_labels_major: Iterable[str | float] | None
     y_labels_major_every: int | None
     y_labels_major_count: int | None
     show_minor_y_labels: bool

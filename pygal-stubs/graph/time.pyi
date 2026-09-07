@@ -72,7 +72,7 @@ class DateLine(
         x_label_rotation: float | None = None,
         show_x_labels: bool | None = None,
         y_labels: Iterable[_YLabelT] | None = None,
-        y_labels_major: Iterable[str] | None = None,
+        y_labels_major: Iterable[str | float] | None = None,
         y_labels_major_every: int | None = None,
         y_labels_major_count: int | None = None,
         show_y_labels: bool | None = None,
@@ -97,7 +97,7 @@ class DateLine(
         max_scale: int | None = None,
         order_min: int | None = None,
         interpolate: (
-            Literal["quadratic", "qubic", "hermite", "lagrange", "trigonometric"] | None
+            Literal["quadratic", "cubic", "hermite", "lagrange", "trigonometric"] | None
         ) = None,
         interpolation_precision: int | None = None,
         interpolation_parameters: dict[str, object] | None = None,

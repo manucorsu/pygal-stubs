@@ -1,4 +1,4 @@
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from typing import Literal, TypedDict
 
 from pygal.graph.bar import Bar as Bar
@@ -16,11 +16,13 @@ class _ConfidenceIntervalDict(TypedDict):
     confidence: NotRequired[float]
 
 class _ValueDict(TypedDict):
-    value: float
+    value: float | None
     label: NotRequired[str]
-    style: NotRequired[str]
+    color: NotRequired[str]
     xlink: NotRequired[str | _LinkDict]
     ci: NotRequired[_ConfidenceIntervalDict]
+    style: NotRequired[str]
+    formatter: NotRequired[Callable[[object], str]]
 
 class HorizontalBar(
     HorizontalGraph[float | None | Sequence[float | None | _ValueDict], Bar]

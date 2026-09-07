@@ -24,16 +24,26 @@ class _LinkDict(TypedDict):
     target: NotRequired[Literal["_blank", "_self", "_parent", "_top"]]
 
 class _ConfidenceIntervalDict(TypedDict):
-    type: Literal["continuous", "dichotomous"]
-    sample_size: int
+    type: NotRequired[Literal["continuous", "dichotomous"]]
+    sample_size: NotRequired[int]
     stddev: NotRequired[float]
     confidence: NotRequired[float]
+    low: NotRequired[float]
+    high: NotRequired[float]
 
 class _ValueDict(TypedDict):
-    value: float
+    value: float | None
     label: NotRequired[str]
+    color: NotRequired[str]
     xlink: NotRequired[str | _LinkDict]
     ci: NotRequired[_ConfidenceIntervalDict]
+    style: NotRequired[str]
+    formatter: NotRequired[Callable[[object], str]]
+
+class _TitleDict(TypedDict):
+    title: str
+    tooltip: NotRequired[str]
+    xlink: NotRequired[str | _LinkDict]
 
 _ValueT = TypeVar("_ValueT", default=float | None | Sequence[float | None | _ValueDict])
 _XLabelT = TypeVar("_XLabelT", default=str)
@@ -72,7 +82,7 @@ class Bar(Graph[_ValueT, _XLabelT, _YLabelT]):
     @override
     def add(
         self,
-        title: str,
+        title: str | _TitleDict,
         values: _ValueT,
         *,
         rounded_bars: int | None = None,

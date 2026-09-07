@@ -40,9 +40,17 @@ class PublicApi(BaseGraph[_XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         ],
     ) -> Self: ...
     @overload
-    def render(self, is_unicode: Literal[False] = False) -> str | bytes: ...
+    def render(
+        self,
+        is_unicode: Literal[False] = False,
+        **kwargs: Any,  # pyright: ignore[reportAny, reportExplicitAny]
+    ) -> str | bytes: ...
     @overload
-    def render(self, is_unicode: Literal[True]) -> str: ...
+    def render(
+        self,
+        is_unicode: Literal[True],
+        **kwargs: Any,  # pyright: ignore[reportAny, reportExplicitAny]
+    ) -> str: ...
     def render_tree(self, **kwargs: object) -> _StdEtreeElement | _LxmlElement: ...
     def render_table(
         self, **kwargs: Any  # pyright: ignore[reportAny, reportExplicitAny]
