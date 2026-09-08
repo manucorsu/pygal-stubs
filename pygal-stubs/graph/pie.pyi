@@ -1,4 +1,4 @@
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 
 from pygal import Config
 from pygal.adapters import none_to_zero as none_to_zero
@@ -20,6 +20,8 @@ class Pie(Graph[float | Sequence[float]]):
         pretty_print: bool | None = None,
         inner_radius: float | None = None,
         half_pie: bool | None = None,
+        print_values: bool | None = None,
+        value_formatter: Callable[[float], str] | None = None,
         **kwargs: object,
     ) -> None: ...
     def slice(self, serie: Serie, start_angle: float, total: float) -> float: ...
