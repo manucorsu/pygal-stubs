@@ -7,7 +7,7 @@
     - hatch (CLI) has been replaced by uv.
     - Hatchling has been replaced by uv\_build.
     - black has been replaced by ruff's formatter.
-    - **the official type checker is still basedpyright** and will likely remain so for the forseeable future, even after ty goes out of beta. See [PR #1]() for more details.
+    - **the official type checker is still basedpyright** and will likely remain so for the forseeable future, even after ty goes out of beta. See [PR #1](https://github.com/manucorsu/pygal-stubs/pull/1) for more details.
 - Added `.python-version` file to specify the Python version for pygal-stubs development. It should always be set to the lowest supported Python version, which is currently 3.11.
 - Cleaned up README
 - **None of these changes should affect end users**, provided that they are using Python 3.11 or higher.
