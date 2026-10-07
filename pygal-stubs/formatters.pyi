@@ -1,6 +1,7 @@
-from typing import Literal, LiteralString, Protocol, overload
+from typing import Literal, Protocol, overload
 
 from pygal.util import float_format as float_format
+from typing_extensions import LiteralString
 
 class _SupportsIsoformat(Protocol):
     def isoformat(self) -> str: ...

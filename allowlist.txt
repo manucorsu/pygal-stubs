@@ -11,5 +11,6 @@
 # actually interacts with, not the internal descriptor mechanism.
 ^pygal\.config\.\w*Config\.\w+$
 
-# does not exist at runtime
+# AnyGraph does not exist at runtime; we define it in the stubs.
+# This is intentional and documented.
 pygal.AnyGraph

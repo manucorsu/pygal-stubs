@@ -1,8 +1,9 @@
 from collections.abc import Callable, Sequence
-from typing import Literal, NotRequired, TypedDict
+from typing import Literal, TypedDict
 
 from pygal.graph.bar import Bar as Bar
 from pygal.graph.horizontal import HorizontalGraph as HorizontalGraph
+from typing_extensions import NotRequired
 
 class _LinkDict(TypedDict):
     href: str

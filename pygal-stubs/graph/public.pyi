@@ -1,15 +1,6 @@
 from collections.abc import Callable, Iterable, Mapping
 from os import PathLike
-from typing import (
-    Any,
-    Generic,
-    Literal,
-    LiteralString,
-    Self,
-    TypeAlias,
-    TypeVar,
-    overload,
-)
+from typing import Any, Generic, Literal, TypeAlias, TypeVar, overload
 from xml.etree.ElementTree import Element as _StdEtreeElement
 
 import flask
@@ -22,6 +13,7 @@ from pygal.graph.base import BaseGraph as BaseGraph
 from pyquery import (  # type: ignore[import-untyped] # pyright: ignore[reportMissingTypeStubs]
     PyQuery,
 )
+from typing_extensions import LiteralString, Self
 
 _FilePath: TypeAlias = (
     int | str | bytes | PathLike[str] | PathLike[bytes]
@@ -61,8 +53,7 @@ class PublicApi(BaseGraph[_XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
     ) -> str: ...
     def render_tree(self, **kwargs: object) -> _StdEtreeElement | _LxmlElement: ...
     def render_table(
-        self,
-        **kwargs: Any,  # pyright: ignore[reportAny, reportExplicitAny]
+        self, **kwargs: Any  # pyright: ignore[reportAny, reportExplicitAny]
     ) -> str: ...
     def render_pyquery(self, **kwargs: object) -> PyQuery: ...
     def render_in_browser(self, **kwargs: object) -> None: ...
@@ -77,6 +68,5 @@ class PublicApi(BaseGraph[_XLabelT, _YLabelT], Generic[_ValueT, _XLabelT, _YLabe
         self, relative_to: float | None = None
     ) -> Literal[""] | LiteralString: ...
     def render_sparkline(
-        self,
-        **kwargs: Any,  # pyright: ignore[reportAny, reportExplicitAny]
+        self, **kwargs: Any  # pyright: ignore[reportAny, reportExplicitAny]
     ) -> str: ...

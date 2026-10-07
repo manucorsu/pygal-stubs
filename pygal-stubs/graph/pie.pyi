@@ -1,5 +1,4 @@
 from collections.abc import Callable, Sequence
-from typing import Self
 
 from pygal import Config
 from pygal.adapters import none_to_zero as none_to_zero
@@ -9,7 +8,7 @@ from pygal.serie import Serie
 from pygal.style import Style
 from pygal.util import alter as alter
 from pygal.util import decorate as decorate
-from typing_extensions import override
+from typing_extensions import Self, override
 
 class Pie(Graph[float | Sequence[float]]):
     def __init__(
