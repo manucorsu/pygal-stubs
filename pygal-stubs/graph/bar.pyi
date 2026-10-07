@@ -1,5 +1,5 @@
 from collections.abc import Callable, Iterable, Sequence
-from typing import Literal, TypedDict, TypeVar
+from typing import Literal, NotRequired, Self, TypedDict, TypeVar
 
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
@@ -17,7 +17,7 @@ from pygal.util import (
 from pygal.util import (
     swap as swap,
 )
-from typing_extensions import NotRequired, Self, override
+from typing_extensions import override
 
 class _LinkDict(TypedDict):
     href: str

@@ -34,6 +34,4 @@ class BaseMap(Graph[_ValueT]):
     ) -> Iterator[tuple[int, tuple[object, object]]]: ...
     def adapt_code(
         self, area_code: _AreaCodeT
-    ) -> (
-        _AreaCodeT
-    ): ...  # this just returns area_code without modifying it or checking it at all so it can be anything
+    ) -> _AreaCodeT: ...  # this just returns area_code without modifying it or checking it at all so it can be anything
