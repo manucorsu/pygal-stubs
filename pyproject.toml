@@ -40,8 +40,6 @@ Issues = "https://github.com/manucorsu/pygal-stubs/issues"
 
 [dependency-groups]
 dev = [
-    "hatch",
-    "black",
     "ruff",
     "basedpyright",
     "mypy",
