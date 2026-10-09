@@ -1,5 +1,5 @@
 from collections.abc import Callable, Iterable, Sequence
-from typing import Generic, Literal, TypedDict, TypeVar
+from typing import Generic, Literal, TypedDict, TypeVar, overload
 
 from pygal import Config
 from pygal.graph.dual import Dual as Dual
@@ -14,7 +14,7 @@ from pygal.util import (
 from pygal.util import (
     ident as ident,
 )
-from typing_extensions import overload, override
+from typing_extensions import override
 
 class _AxisLabelsDict(TypedDict):
     label: str

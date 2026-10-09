@@ -1,6 +1,14 @@
 from collections.abc import Callable, Iterable, Sequence
 from types import EllipsisType
-from typing import Generic, Literal, TypedDict, TypeVar
+from typing import (
+    Generic,
+    Literal,
+    LiteralString,
+    NotRequired,
+    Self,
+    TypedDict,
+    TypeVar,
+)
 
 from pygal import Config
 from pygal.graph.graph import Graph as Graph
@@ -15,7 +23,7 @@ from pygal.util import (
 from pygal.util import (
     decorate as decorate,
 )
-from typing_extensions import LiteralString, NotRequired, Self, override
+from typing_extensions import override
 
 class _AxisLabelsDict(TypedDict):
     label: str

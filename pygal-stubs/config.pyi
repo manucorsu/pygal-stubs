@@ -1,13 +1,12 @@
 import builtins
 from collections.abc import Callable
 from types import FunctionType
-from typing import Generic, Literal, TypeVar
+from typing import Generic, Literal, Self, TypeVar
 
 from pygal import formatters as formatters
 from pygal.interpolate import INTERPOLATIONS as INTERPOLATIONS
 from pygal.style import DefaultStyle as DefaultStyle
 from pygal.style import Style as Style
-from typing_extensions import Self
 
 CONFIG_ITEMS: list[Key[object, object | None]]
 callable = FunctionType
