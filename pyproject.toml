@@ -66,5 +66,6 @@ target-version = "py311"
 # "Class name should use CapWords convention"
 
 [tool.basedpyright]
+pythonVersion = "3.11"
 reportUnsafeMultipleInheritance = false
 reportUnusedCallResult = false
