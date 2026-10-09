@@ -115,3 +115,7 @@ def render_any_graph(g: AnyGraph) -> None:
 > [!WARNING]
 > As mentioned previously **AnyGraph does not exist at runtime** and trying to use it for anything that isn't static type checking (e.g. `isinstance`, `issubclass`, `issubtype`...) will result in an error being raised at runtime.
 
+## Versioning
+`{pygal major}.{pygal minor}.{pygal patch}.{stubs revision (incremental)}`
+
+For example, the current version number `3.1.3.4` should be interpreted as "the fourth revision of the stubs for pygal version `3.1.3`"
